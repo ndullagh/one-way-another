@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnnh5riwlya1k"]
+
+[ext_resource type="Script" path="res://scripts/UI/credits.gd" id="1_2ytdt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5byde"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dtrl"]
+bg_color = Color(0.257476, 0.257476, 0.257476, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rys20"]
+bg_color = Color(0.0827415, 0.0827414, 0.0827414, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="credits" type="CanvasLayer"]
+script = ExtResource("1_2ytdt")
+
+[node name="screen_container" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="screen_container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5byde")
+
+[node name="text_container" type="MarginContainer" parent="screen_container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -616.5
+offset_top = -422.0
+offset_right = 616.5
+offset_bottom = 422.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="screen_container/Panel/text_container"]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Title" type="Label" parent="screen_container/Panel/text_container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Credits" type="Label" parent="screen_container/Panel/text_container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Programming: Noelle Dullaghan
+Art: Noelle Dullaghan
+Writing: Noelle Dullaghan
+Score: AJ Jordan"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="screen_container/Panel/text_container/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_2dtrl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rys20")
+text = "Return To Title"

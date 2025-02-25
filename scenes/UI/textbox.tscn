@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://bie6k6h2tlk6n"]
+
+[ext_resource type="Texture2D" uid="uid://dwqnlec4lcb7k" path="res://cutscenes/overall/bg0.png" id="2_n62k3"]
+[ext_resource type="Script" path="res://scripts/UI/textbox2.gd" id="3_a0vi5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_westr"]
+bg_color = Color(0, 0, 0, 0.560784)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="FontFile" id="FontFile_tari0"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/64/0/ascent = 0.0
+cache/0/64/0/descent = 0.0
+cache/0/64/0/underline_position = 0.0
+cache/0/64/0/underline_thickness = 0.0
+cache/0/64/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("3_a0vi5")
+
+[node name="Background0" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_n62k3")
+
+[node name="Background1" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextboxContainer" type="MarginContainer" parent="."]
+clip_contents = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -418.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Panel" type="Panel" parent="TextboxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_westr")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 163)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="TextboxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_tari0")
+theme_override_font_sizes/font_size = 64
+text = "*"
+
+[node name="Label" type="Label" parent="TextboxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1592, 258)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 64
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="End" type="Label" parent="TextboxContainer/Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 64
+text = "v"

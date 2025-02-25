@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://b81l8avrn0acd"]
+
+[ext_resource type="Script" path="res://scripts/UI/title_screen.gd" id="1_rg8sg"]
+[ext_resource type="Texture2D" uid="uid://c23x76ofogxp1" path="res://cutscenes/c3/1.png" id="2_jlftj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7upjr"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+
+[sub_resource type="Theme" id="Theme_30v8g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6jvu"]
+bg_color = Color(0.255659, 0.255659, 0.255659, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_271dk"]
+bg_color = Color(0.066755, 0.066755, 0.066755, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="title_screen" type="CanvasLayer"]
+script = ExtResource("1_rg8sg")
+
+[node name="screen_container" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="screen_container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7upjr")
+
+[node name="TextureRect" type="TextureRect" parent="screen_container/Panel"]
+modulate = Color(1, 1, 1, 0.32549)
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_30v8g")
+texture = ExtResource("2_jlftj")
+
+[node name="title_container" type="MarginContainer" parent="screen_container/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -283.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(960, 150)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="screen_container/Panel/title_container"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="screen_container/Panel/title_container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 200
+text = "ONE WAY: Another"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="button_container" type="MarginContainer" parent="screen_container/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 358.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 100)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="screen_container/Panel/button_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="screen_container/Panel/button_container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6jvu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_271dk")
+text = "Begin"
+
+[node name="Button2" type="Button" parent="screen_container/Panel/button_container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6jvu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_271dk")
+text = "Credits"
+
+[node name="Button3" type="Button" parent="screen_container/Panel/button_container/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+theme_override_styles/hover = SubResource("StyleBoxFlat_q6jvu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_271dk")
+text = "Quit"

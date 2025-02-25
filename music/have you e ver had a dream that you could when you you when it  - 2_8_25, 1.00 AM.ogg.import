@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcg6ju0cipyin"
+path="res://.godot/imported/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg-7bb4d9cf83f41b43d6dd35e8de5c6acf.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg"
+dest_files=["res://.godot/imported/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg-7bb4d9cf83f41b43d6dd35e8de5c6acf.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

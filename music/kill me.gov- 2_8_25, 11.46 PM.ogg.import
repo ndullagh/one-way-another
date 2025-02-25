@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8vrxo1orh0u7"
+path="res://.godot/imported/kill me.gov- 2_8_25, 11.46 PM.ogg-53beecfdc871e563be7b28546c4fb82b.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/kill me.gov- 2_8_25, 11.46 PM.ogg"
+dest_files=["res://.godot/imported/kill me.gov- 2_8_25, 11.46 PM.ogg-53beecfdc871e563be7b28546c4fb82b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
