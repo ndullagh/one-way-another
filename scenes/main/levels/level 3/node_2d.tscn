@@ -170,6 +170,14 @@ material = SubResource("CanvasItemMaterial_pgm3q")
 position = Vector2(-25, -287)
 texture = ExtResource("5_cfi4l")
 
+[node name="text_area" type="Area2D" parent="."]
+position = Vector2(254, -776)
+script = ExtResource("50_ksb3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_71w0r")
+
 [node name="text_area2" type="Area2D" parent="."]
 position = Vector2(10085, -210)
 script = ExtResource("51_ll73u")
@@ -186,6 +194,53 @@ position = Vector2(356, 400)
 position = Vector2(338.25, 534)
 shape = SubResource("RectangleShape2D_71w0r")
 
+[node name="text_area3" type="Area2D" parent="."]
+position = Vector2(27060, -1169)
+script = ExtResource("52_hes0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area3"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_71w0r")
+
+[node name="AnimatedSprite2D" parent="text_area3" instance=ExtResource("14_lskp3")]
+position = Vector2(351, 518)
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area3"]
+position = Vector2(321, 823)
+texture = ExtResource("13_3kcv2")
+
+[node name="text_area5" type="Area2D" parent="."]
+position = Vector2(18236, 1613)
+script = ExtResource("53_jvi07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area5"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_71w0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area5"]
+position = Vector2(336, 831)
+texture = ExtResource("13_3kcv2")
+
+[node name="AnimatedSprite2D" parent="text_area5" instance=ExtResource("14_lskp3")]
+position = Vector2(368, 615)
+frame = 0
+frame_progress = 0.0
+
+[node name="text_area6" type="Area2D" parent="."]
+position = Vector2(41972, -754)
+script = ExtResource("54_qxoul")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_71w0r")
+
+[node name="AnimatedSprite2D" parent="text_area6" instance=ExtResource("14_lskp3")]
+position = Vector2(344, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area6"]
+position = Vector2(330, 614)
+texture = ExtResource("13_3kcv2")
+
 [node name="Kol" parent="." groups=["Player"] instance=ExtResource("6_iv1di")]
 
 [node name="SpikeLayer" type="TileMapLayer" parent="."]
@@ -198,38 +253,6 @@ tile_set = SubResource("TileSet_u3xhy")
 navigation_visibility_mode = 1
 
 [node name="Textbox" parent="." instance=ExtResource("48_kxrha")]
-
-[node name="text_area" type="Area2D" parent="."]
-position = Vector2(254, -776)
-script = ExtResource("50_ksb3e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
-
-[node name="text_area3" type="Area2D" parent="."]
-position = Vector2(27060, -1169)
-script = ExtResource("52_hes0g")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area3"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
-
-[node name="text_area5" type="Area2D" parent="."]
-position = Vector2(18236, 1613)
-script = ExtResource("53_jvi07")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area5"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
-
-[node name="text_area6" type="Area2D" parent="."]
-position = Vector2(41972, -754)
-script = ExtResource("54_qxoul")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
 
 [node name="Area2D" parent="." instance=ExtResource("55_gp5rp")]
 
