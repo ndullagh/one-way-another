@@ -9,7 +9,7 @@ func _ready():
 
 func _on_body_entered(body):
 	#ensure it's the player and that the cutscene hasn't been seen yet
-	if body is CharacterBody2D and not GameState.has_seen_dialogue(5):  # # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
+	if body.is_in_group("Player") and not GameState.has_seen_dialogue(5):  # # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
 		
 		GameState.mark_dialogue_as_seen(5) # mark as seen
 		
