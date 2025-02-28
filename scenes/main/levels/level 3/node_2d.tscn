@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://csv33dosoqjm"]
+[gd_scene load_steps=36 format=4 uid="uid://csv33dosoqjm"]
 
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_wkh7x"]
 [ext_resource type="Texture2D" uid="uid://cw0skkipjferr" path="res://bgs/far.png" id="2_r1har"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c3by4quto6g0v" path="res://bgs/near.png" id="4_u4lh7"]
 [ext_resource type="Texture2D" uid="uid://c6lvfsr0jnpfj" path="res://bgs/overlay.png" id="5_cfi4l"]
 [ext_resource type="PackedScene" uid="uid://b1mb07oy3cv70" path="res://scenes/main/kol/kol.tscn" id="6_iv1di"]
+[ext_resource type="Texture2D" uid="uid://r7ankqj3ycdf" path="res://other_sprites/cutscene_triggers/tank.png" id="13_3kcv2"]
+[ext_resource type="PackedScene" uid="uid://tbtj1lr0qf7f" path="res://scenes/UI/enter_prompt.tscn" id="14_lskp3"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="24_0aoxm"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="45_c1gpj"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="46_q05ki"]
@@ -28,6 +30,9 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgm3q"]
 blend_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71w0r"]
+size = Vector2(316.5, 1266.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdf75"]
 texture = ExtResource("45_c1gpj")
@@ -118,9 +123,6 @@ sources/0 = SubResource("TileSetAtlasSource_vrpgm")
 sources/2 = SubResource("TileSetAtlasSource_vk4b7")
 sources/4 = SubResource("TileSetAtlasSource_hg0w7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71w0r"]
-size = Vector2(316.5, 1266.5)
-
 [node name="Node2D" type="Node2D"]
 
 [node name="BG" type="ParallaxBackground" parent="."]
@@ -168,6 +170,22 @@ material = SubResource("CanvasItemMaterial_pgm3q")
 position = Vector2(-25, -287)
 texture = ExtResource("5_cfi4l")
 
+[node name="text_area2" type="Area2D" parent="."]
+position = Vector2(10085, -210)
+script = ExtResource("51_ll73u")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area2"]
+position = Vector2(307.001, 752)
+scale = Vector2(1.6582, 1.6582)
+texture = ExtResource("13_3kcv2")
+
+[node name="AnimatedSprite2D" parent="text_area2" instance=ExtResource("14_lskp3")]
+position = Vector2(356, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area2"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_71w0r")
+
 [node name="Kol" parent="." groups=["Player"] instance=ExtResource("6_iv1di")]
 
 [node name="SpikeLayer" type="TileMapLayer" parent="."]
@@ -186,14 +204,6 @@ position = Vector2(254, -776)
 script = ExtResource("50_ksb3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
-
-[node name="text_area2" type="Area2D" parent="."]
-position = Vector2(10085, -210)
-script = ExtResource("51_ll73u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area2"]
 position = Vector2(338.25, 534)
 shape = SubResource("RectangleShape2D_71w0r")
 
