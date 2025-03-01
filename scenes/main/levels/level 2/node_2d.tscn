@@ -157,13 +157,19 @@ material = SubResource("CanvasItemMaterial_pgm3q")
 position = Vector2(-25, -287)
 texture = ExtResource("5_ntni5")
 
-[node name="Camera2D2" type="Camera2D" parent="."]
+[node name="Camera2D2" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position = Vector2(990, 873)
 rotation = -3.14159
 script = ExtResource("8_7wfw7")
-player = NodePath("../CharacterBody2D2")
+player = NodePath("../Flying Kol")
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("6_7q4o3")]
+[node name="SpikeLayer2" type="TileMapLayer" parent="Camera2D2"]
+position = Vector2(990.002, 872.997)
+rotation = 3.14159
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAFD//wQAAAAAAAAAAFD//wUAAAAAAAAAAFD//wYAAAAAAAAAAFD//wcAAAAAAAAAAFD//wgAAAAAAAAAAFD//wkAAAAAAAAAAFD//woAAAAAAAAAAFD//wsAAAAAAAAAAFD//wwAAAAAAAAAAFD//w0AAAAAAAAAAFAVAAYAAAAAAAAAAGAUAAMAAAAAAAAAAGAUAAQAAAAAAAAAAGAUAAUAAAAAAAAAAGAUAAYAAAAAAAAAAGAUAAcAAAAAAAAAAGAUAAgAAAAAAAAAAGAUAAkAAAAAAAAAAGAUAAoAAAAAAAAAAGAUAAsAAAAAAAAAAGAUAAwAAAAAAAAAAGAUAA0AAAAAAAAAAGA=")
+tile_set = SubResource("TileSet_pbcws")
+
+[node name="Flying Kol" parent="." instance=ExtResource("6_7q4o3")]
 position = Vector2(1242, 252)
 rotation = 1.5708
 script = ExtResource("7_nvcch")

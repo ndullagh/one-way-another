@@ -216,3 +216,7 @@ offset = Vector2(0, 15)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(25.25, 22)
 shape = SubResource("RectangleShape2D_t8fbx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(26, 22)
+scale = Vector2(3.8, 4.5)

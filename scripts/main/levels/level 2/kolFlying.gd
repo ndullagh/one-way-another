@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	var collision = get_last_slide_collision()
-	if collision and collision.get_collider().name == "SpikeLayer":
+	if collision and (collision.get_collider().name == "SpikeLayer" or collision.get_collider().name == "SpikeLayer2"):
 		print("Collided with:", collision.get_collider().name)
 		death_screen.show_death_screen()
 		die()
