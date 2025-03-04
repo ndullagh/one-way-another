@@ -3,6 +3,8 @@ extends CharacterBody2D
 #Script for controlling the player character.
 #right now in the scene tree the player character exists only within level 3. This may need to change in some way.
 #this may mean adding a "player" to each scene, or somehow making the player universal. I'm not sure of the details.
+@export var projectile_scene: PackedScene  # Reference to the projectile scene
+@onready var shoot_position = $ShootPoint  # Position from where bullets spawn
 
 @onready var sprite = $AnimatedSprite2D  # Make sure this matches your node's path
 @onready var death_screen = $/root/Node2D/death_screen
@@ -53,14 +55,23 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		# apply acceleration towards max speed
 		velocity.x = move_toward(velocity.x, direction * SPEED, ACCELERATION * delta)
-		facing_right = direction > 0  # Update facing direction
+		if direction > 0:
+			facing_right = true
+			shoot_position.position.x = abs(shoot_position.position.x)  # Ensure it's on the right
+		elif direction < 0:
+			facing_right = false
+			shoot_position.position.x = -abs(shoot_position.position.x)  # Move it to the left
 	else:
 		# apply friction when no input
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+	
+	
+	if Input.is_action_just_pressed("shoot"):
+		shoot_projectile()
 		
 	# Update animation
 	update_animation(direction, delta)
-
+	
 	move_and_slide()
 
 	var collision = get_last_slide_collision()
@@ -93,3 +104,14 @@ func update_animation(direction: float, delta: float) -> void:
 			sprite.play("idle_right" if facing_right else "idle_left")
 			sprite.position.y = lerp(sprite.position.y, 0.0, 20 * delta)  # unscoot
 		sprite.scale = Vector2(.5, .5)
+		
+func shoot_projectile():
+	if projectile_scene:
+		var projectile = projectile_scene.instantiate()
+		get_parent().add_child(projectile)
+		projectile.global_position = shoot_position.global_position
+
+		# Get the Hitbox node inside the projectile
+		var hitbox = projectile.get_node("Hitbox")  # Make sure "Hitbox" is the correct name
+		if hitbox:
+			hitbox.direction = Vector2.RIGHT if facing_right else Vector2.LEFT

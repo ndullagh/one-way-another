@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbtg7stpmp3sj"]
+
+[ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/projectile.gd" id="1_i6fr6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_caoqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj1ym"]
+size = Vector2(5.625, 5.625)
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-2.8, -2.8)
+script = ExtResource("1_i6fr6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
+position = Vector2(2.8, 2.8)
+rotation = 3.14159
+scale = Vector2(4.42137, 4.42137)
+texture = SubResource("PlaceholderTexture2D_caoqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2.8, 2.8)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_yj1ym")
+
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
