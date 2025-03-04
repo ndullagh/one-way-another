@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://crppt6mcgws28"]
+[gd_scene load_steps=42 format=3 uid="uid://xg62lg37olxj"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]

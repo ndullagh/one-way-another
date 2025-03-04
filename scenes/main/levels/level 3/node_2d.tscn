@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b8c4mfk4pmn2r" path="res://other_sprites/prompts/final_enter/1.png" id="10_e64gj"]
 [ext_resource type="Texture2D" uid="uid://d214v53fedsr4" path="res://other_sprites/prompts/final_enter/2.png" id="11_qgngp"]
 [ext_resource type="Texture2D" uid="uid://b8dbky4ue6vpi" path="res://other_sprites/cutscene_triggers/triggers/bench.png" id="13_3apj2"]
-[ext_resource type="Texture2D" uid="uid://r7ankqj3ycdf" path="res://other_sprites/cutscene_triggers/tank.png" id="13_3kcv2"]
-[ext_resource type="PackedScene" uid="uid://tbtj1lr0qf7f" path="res://scenes/UI/enter_prompt.tscn" id="14_lskp3"]
+[ext_resource type="PackedScene" uid="uid://b5r1vbo7mb6wq" path="res://scenes/UI/enter_prompt.tscn" id="14_lskp3"]
 [ext_resource type="Texture2D" uid="uid://df7805cp78hns" path="res://other_sprites/cutscene_triggers/triggers/glasses.png" id="15_1hoia"]
+[ext_resource type="Texture2D" uid="uid://o08wcg1nin6c" path="res://other_sprites/cutscene_triggers/lab.png" id="17_kae6b"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="24_0aoxm"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="45_c1gpj"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="46_q05ki"]
@@ -257,6 +257,7 @@ texture = ExtResource("8_xbwkm")
 [node name="AnimatedSprite2D" parent="text_area2" instance=ExtResource("14_lskp3")]
 position = Vector2(356, 400)
 sprite_frames = SubResource("SpriteFrames_if2di")
+frame = 0
 frame_progress = 0.455951
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area2"]
@@ -274,6 +275,7 @@ shape = SubResource("RectangleShape2D_71w0r")
 [node name="AnimatedSprite2D" parent="text_area3" instance=ExtResource("14_lskp3")]
 position = Vector2(351, 518)
 sprite_frames = SubResource("SpriteFrames_j31bu")
+frame = 0
 frame_progress = 0.283537
 
 [node name="Sprite2D" type="Sprite2D" parent="text_area3"]
@@ -305,18 +307,19 @@ position = Vector2(41972, -754)
 script = ExtResource("54_qxoul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
-position = Vector2(338.25, 534)
+position = Vector2(237, 522)
 shape = SubResource("RectangleShape2D_71w0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area6"]
+position = Vector2(1086, 497)
+scale = Vector2(0.831543, 0.831543)
+texture = ExtResource("17_kae6b")
 
 [node name="AnimatedSprite2D" parent="text_area6" instance=ExtResource("14_lskp3")]
 position = Vector2(344, 350)
 sprite_frames = SubResource("SpriteFrames_8eema")
 frame = 0
 frame_progress = 0.0
-
-[node name="Sprite2D" type="Sprite2D" parent="text_area6"]
-position = Vector2(330, 614)
-texture = ExtResource("13_3kcv2")
 
 [node name="Kol" parent="." groups=["Player"] instance=ExtResource("6_iv1di")]
 
@@ -361,5 +364,5 @@ parameters/looping = true
 position = Vector2(43005.9, -1117.6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-396.898, 689.598)
+position = Vector2(-544.898, 681.6)
 shape = SubResource("RectangleShape2D_xe338")
