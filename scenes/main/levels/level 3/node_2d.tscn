@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://csv33dosoqjm"]
+[gd_scene load_steps=47 format=4 uid="uid://csv33dosoqjm"]
 
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_wkh7x"]
 [ext_resource type="Texture2D" uid="uid://cw0skkipjferr" path="res://bgs/far.png" id="2_r1har"]
@@ -6,8 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://c3by4quto6g0v" path="res://bgs/near.png" id="4_u4lh7"]
 [ext_resource type="Texture2D" uid="uid://c6lvfsr0jnpfj" path="res://bgs/overlay.png" id="5_cfi4l"]
 [ext_resource type="PackedScene" uid="uid://b1mb07oy3cv70" path="res://scenes/main/kol/kol.tscn" id="6_iv1di"]
+[ext_resource type="Texture2D" uid="uid://cguht2xmrvqrj" path="res://other_sprites/cutscene_triggers/triggers/tank.png" id="8_xbwkm"]
+[ext_resource type="Texture2D" uid="uid://b8c4mfk4pmn2r" path="res://other_sprites/prompts/final_enter/1.png" id="10_e64gj"]
+[ext_resource type="Texture2D" uid="uid://d214v53fedsr4" path="res://other_sprites/prompts/final_enter/2.png" id="11_qgngp"]
+[ext_resource type="Texture2D" uid="uid://b8dbky4ue6vpi" path="res://other_sprites/cutscene_triggers/triggers/bench.png" id="13_3apj2"]
 [ext_resource type="Texture2D" uid="uid://r7ankqj3ycdf" path="res://other_sprites/cutscene_triggers/tank.png" id="13_3kcv2"]
 [ext_resource type="PackedScene" uid="uid://tbtj1lr0qf7f" path="res://scenes/UI/enter_prompt.tscn" id="14_lskp3"]
+[ext_resource type="Texture2D" uid="uid://df7805cp78hns" path="res://other_sprites/cutscene_triggers/triggers/glasses.png" id="15_1hoia"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="24_0aoxm"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="45_c1gpj"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="46_q05ki"]
@@ -32,7 +37,66 @@
 blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_71w0r"]
-size = Vector2(316.5, 1266.5)
+size = Vector2(369, 1266.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_if2di"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e64gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qgngp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fot11"]
+size = Vector2(1586, 1070)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j31bu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e64gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qgngp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6gm1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e64gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qgngp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8eema"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_e64gj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qgngp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdf75"]
 texture = ExtResource("45_c1gpj")
@@ -123,6 +187,9 @@ sources/0 = SubResource("TileSetAtlasSource_vrpgm")
 sources/2 = SubResource("TileSetAtlasSource_vk4b7")
 sources/4 = SubResource("TileSetAtlasSource_hg0w7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe338"]
+size = Vector2(239, 863.847)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="BG" type="ParallaxBackground" parent="."]
@@ -185,29 +252,34 @@ script = ExtResource("51_ll73u")
 [node name="Sprite2D" type="Sprite2D" parent="text_area2"]
 position = Vector2(307.001, 752)
 scale = Vector2(1.6582, 1.6582)
-texture = ExtResource("13_3kcv2")
+texture = ExtResource("8_xbwkm")
 
 [node name="AnimatedSprite2D" parent="text_area2" instance=ExtResource("14_lskp3")]
 position = Vector2(356, 400)
+sprite_frames = SubResource("SpriteFrames_if2di")
+frame_progress = 0.455951
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area2"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_71w0r")
+position = Vector2(302, 525)
+shape = SubResource("RectangleShape2D_fot11")
 
 [node name="text_area3" type="Area2D" parent="."]
 position = Vector2(27060, -1169)
 script = ExtResource("52_hes0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area3"]
-position = Vector2(338.25, 534)
+position = Vector2(313.5, 534)
 shape = SubResource("RectangleShape2D_71w0r")
 
 [node name="AnimatedSprite2D" parent="text_area3" instance=ExtResource("14_lskp3")]
 position = Vector2(351, 518)
+sprite_frames = SubResource("SpriteFrames_j31bu")
+frame_progress = 0.283537
 
 [node name="Sprite2D" type="Sprite2D" parent="text_area3"]
-position = Vector2(321, 823)
-texture = ExtResource("13_3kcv2")
+position = Vector2(304, 930)
+scale = Vector2(0.382691, 0.382691)
+texture = ExtResource("13_3apj2")
 
 [node name="text_area5" type="Area2D" parent="."]
 position = Vector2(18236, 1613)
@@ -218,11 +290,13 @@ position = Vector2(338.25, 534)
 shape = SubResource("RectangleShape2D_71w0r")
 
 [node name="Sprite2D" type="Sprite2D" parent="text_area5"]
-position = Vector2(336, 831)
-texture = ExtResource("13_3kcv2")
+position = Vector2(425, 973)
+scale = Vector2(0.618649, 0.618649)
+texture = ExtResource("15_1hoia")
 
 [node name="AnimatedSprite2D" parent="text_area5" instance=ExtResource("14_lskp3")]
-position = Vector2(368, 615)
+position = Vector2(351, 684)
+sprite_frames = SubResource("SpriteFrames_h6gm1")
 frame = 0
 frame_progress = 0.0
 
@@ -236,6 +310,9 @@ shape = SubResource("RectangleShape2D_71w0r")
 
 [node name="AnimatedSprite2D" parent="text_area6" instance=ExtResource("14_lskp3")]
 position = Vector2(344, 350)
+sprite_frames = SubResource("SpriteFrames_8eema")
+frame = 0
+frame_progress = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="text_area6"]
 position = Vector2(330, 614)
@@ -279,3 +356,10 @@ parameters/looping = true
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("64_527ms")
 parameters/looping = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(43005.9, -1117.6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-396.898, 689.598)
+shape = SubResource("RectangleShape2D_xe338")
