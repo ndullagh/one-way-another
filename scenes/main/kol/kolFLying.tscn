@@ -1,10 +1,14 @@
-[gd_scene load_steps=45 format=3 uid="uid://xg62lg37olxj"]
+[gd_scene load_steps=49 format=3 uid="uid://xg62lg37olxj"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]
+[ext_resource type="Texture2D" uid="uid://dv2k6vrsfwnt" path="res://charsprites/flying/boost/1.png" id="2_ksn4n"]
+[ext_resource type="Texture2D" uid="uid://bub3td73xw3wr" path="res://charsprites/flying/boost/2.png" id="3_435m6"]
 [ext_resource type="Texture2D" uid="uid://mjoh57bkixb6" path="res://charsprites/jumpfall/jumpfall/fl/fl2.png" id="3_dwmnj"]
 [ext_resource type="Texture2D" uid="uid://bg6l15k75tf57" path="res://charsprites/jumpfall/jumpfall/fr/fr1.png" id="4_h2vxc"]
+[ext_resource type="Texture2D" uid="uid://dem0237m5udkm" path="res://charsprites/flying/boost/3.png" id="4_ph4ir"]
 [ext_resource type="Texture2D" uid="uid://4jsdoai6hxav" path="res://charsprites/jumpfall/jumpfall/fr/fr2.png" id="5_jp67k"]
+[ext_resource type="Texture2D" uid="uid://c2o5wr2jjbp1x" path="res://charsprites/flying/boost/4.png" id="5_pvpuc"]
 [ext_resource type="Texture2D" uid="uid://cc1hh36hsngtp" path="res://charsprites/il/l/il1.png" id="6_6fk8i"]
 [ext_resource type="Texture2D" uid="uid://c85mwhoik4o24" path="res://charsprites/flying/flying/1.png" id="6_qm68f"]
 [ext_resource type="Texture2D" uid="uid://dj3yim1ne4vdx" path="res://charsprites/flying/flying/2.png" id="7_qsos8"]
@@ -45,6 +49,26 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kkhdi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ksn4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_435m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ph4ir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pvpuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ph4ir")
+}],
+"loop": false,
+"name": &"boost",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_jxpdj")
@@ -227,8 +251,8 @@ script = ExtResource("1_0derk")
 position = Vector2(10, 7)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kkhdi")
-animation = &"flying"
-frame_progress = 0.30837
+animation = &"boost"
+autoplay = "flying"
 offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

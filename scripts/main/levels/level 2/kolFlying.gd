@@ -5,7 +5,7 @@ extends CharacterBody2D
 #this may mean adding a "player" to each scene, or somehow making the player universal. I'm not sure of the details.
 
 @onready var sprite = $AnimatedSprite2D  # Make sure this matches your node's path
-@onready var death_screen = $/root/Node2D/death_screen
+@onready var death_screen = $/root/Node2D2/death_screen
 
 @export var coyote_time: float = 0.1  # time allowed to jump after falling
 
@@ -41,6 +41,10 @@ func _physics_process(delta: float) -> void:
 		boost_cooldown = .25
 		boost_timer = 1.25
 		active = false
+		sprite.play("boost")
+		await sprite.animation_finished
+		sprite.play("flying")  # Return to idle after attack
+		
 		
 	#To stop the user from holding Space Bar between boosts
 	if !Input.is_action_pressed("ui_select"):
@@ -49,17 +53,6 @@ func _physics_process(delta: float) -> void:
 	if(boost_cooldown < 0):
 		SPEED = 600.0
 		
-		
-		
-		
-		
-		# restart jump animation
-		if sprite.animation in ["run_right", "idle_right", "fall_right", "jump_right"]:
-			sprite.play("jump_right")
-			sprite.frame = 0  # force restart animation
-		elif sprite.animation in ["run_left", "idle_left", "fall_left", "jump_left"]:
-			sprite.play("jump_left")
-			sprite.frame = 0  # Force restart animation
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -80,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
 		
 	# Update animation
-	update_animation(direction, delta)
+	#update_animation(direction, delta)
 
 	move_and_slide()
 
@@ -95,23 +88,5 @@ func die():
 	set_physics_process(false)  # disable movement
 	hide()  # hide player
 	
-func update_animation(direction: float, delta: float) -> void:
-	if not is_on_floor():
-		if velocity.y >= 0:  #fall if moving down
-			if facing_right:
-				sprite.play("fall_right") 
-			else:
-				sprite.play("fall_left")
-		elif facing_right:
-			sprite.animation = "jump_right"
-		else:
-			sprite.animation = "jump_left"
-		sprite.scale = Vector2(.47, .47) #adjust sprite scale to account for inconsistency
-	else:
-		if direction != 0:
-			sprite.play("run_right" if facing_right else "run_left")
-			sprite.position.y = lerp(sprite.position.y, 15.0, 20 * delta)  # scoot sprite down to adjust for inconsistency
-		else:
-			sprite.play("idle_right" if facing_right else "idle_left")
-			sprite.position.y = lerp(sprite.position.y, 0.0, 20 * delta)  # unscoot
-		sprite.scale = Vector2(.5, .5)
+#func update_animation(direction: float, delta: float) -> void:
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dwcvrli657a23"]
+[gd_scene load_steps=25 format=4 uid="uid://dwcvrli657a23"]
 
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_qkb7b"]
 [ext_resource type="Texture2D" uid="uid://cw0skkipjferr" path="res://bgs/far.png" id="2_iukvc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/main/levels/level 2/flyingCamera.gd" id="8_7wfw7"]
 [ext_resource type="Texture2D" uid="uid://cbdgy6f8iy3b5" path="res://tiles/tm.png" id="9_vg123"]
 [ext_resource type="PackedScene" uid="uid://bie6k6h2tlk6n" path="res://scenes/UI/textbox.tscn" id="10_ibf6f"]
+[ext_resource type="Script" path="res://scripts/UI/textbox2-lvl2.gd" id="13_7ygg8"]
 [ext_resource type="PackedScene" uid="uid://bn3b3lf76tt65" path="res://scenes/UI/death_screen.tscn" id="22_b5o4v"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="23_p7kb4"]
 [ext_resource type="AudioStream" uid="uid://dcg6ju0cipyin" path="res://music/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg" id="24_wbd2s"]
@@ -171,7 +172,6 @@ tile_set = SubResource("TileSet_pbcws")
 
 [node name="Flying Kol" parent="." instance=ExtResource("6_7q4o3")]
 position = Vector2(1242, 252)
-rotation = 1.5708
 script = ExtResource("7_nvcch")
 
 [node name="SpikeLayer" type="TileMapLayer" parent="."]
@@ -184,8 +184,11 @@ tile_set = SubResource("TileSet_u3xhy")
 navigation_visibility_mode = 1
 
 [node name="Textbox" parent="." instance=ExtResource("10_ibf6f")]
+visible = false
+script = ExtResource("13_7ygg8")
 
 [node name="death_screen" parent="." instance=ExtResource("22_b5o4v")]
+visible = false
 script = ExtResource("23_p7kb4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
