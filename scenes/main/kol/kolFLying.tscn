@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://crppt6mcgws28"]
+[gd_scene load_steps=45 format=3 uid="uid://xg62lg37olxj"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bg6l15k75tf57" path="res://charsprites/jumpfall/jumpfall/fr/fr1.png" id="4_h2vxc"]
 [ext_resource type="Texture2D" uid="uid://4jsdoai6hxav" path="res://charsprites/jumpfall/jumpfall/fr/fr2.png" id="5_jp67k"]
 [ext_resource type="Texture2D" uid="uid://cc1hh36hsngtp" path="res://charsprites/il/l/il1.png" id="6_6fk8i"]
+[ext_resource type="Texture2D" uid="uid://c85mwhoik4o24" path="res://charsprites/flying/flying/1.png" id="6_qm68f"]
+[ext_resource type="Texture2D" uid="uid://dj3yim1ne4vdx" path="res://charsprites/flying/flying/2.png" id="7_qsos8"]
 [ext_resource type="Texture2D" uid="uid://bwbnevdnpdyhj" path="res://charsprites/il/l/il2.png" id="7_twqvv"]
 [ext_resource type="Texture2D" uid="uid://d2m1o3gfqnuqy" path="res://charsprites/il/l/il3.png" id="8_jiw50"]
+[ext_resource type="Texture2D" uid="uid://dfiknii587r4c" path="res://charsprites/flying/flying/3.png" id="8_jm87l"]
 [ext_resource type="Texture2D" uid="uid://c64oyd8mj4m2k" path="res://charsprites/il/l/il4.png" id="9_idyoc"]
 [ext_resource type="Texture2D" uid="uid://cjdhdiltivcd5" path="res://charsprites/ir/r/ir1.png" id="10_a0q0y"]
 [ext_resource type="Texture2D" uid="uid://bx0ubkuiobliv" path="res://charsprites/ir/r/ir2.png" id="11_2g56o"]
@@ -63,6 +66,20 @@ animations = [{
 "loop": true,
 "name": &"fall_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qm68f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsos8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jm87l")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -210,7 +227,8 @@ script = ExtResource("1_0derk")
 position = Vector2(10, 7)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kkhdi")
-animation = &"idle_right"
+animation = &"flying"
+frame_progress = 0.30837
 offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
