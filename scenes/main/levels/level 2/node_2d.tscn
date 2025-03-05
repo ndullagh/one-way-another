@@ -172,7 +172,7 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAFD+/wQAAAAAAAAAAFD+/wUAAAAAAAA
 tile_set = SubResource("TileSet_pbcws")
 
 [node name="Flying Kol" parent="." instance=ExtResource("6_7q4o3")]
-position = Vector2(14263, 240)
+position = Vector2(1000, 240)
 script = ExtResource("7_nvcch")
 
 [node name="SpikeLayer" type="TileMapLayer" parent="."]
