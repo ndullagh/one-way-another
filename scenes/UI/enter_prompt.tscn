@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://copmmitlkqqh5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_drmq2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_drmq2")
+frame = 1
+frame_progress = 0.459712
