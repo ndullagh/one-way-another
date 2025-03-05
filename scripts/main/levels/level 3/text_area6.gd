@@ -1,5 +1,4 @@
 extends Area2D
-
 @onready var textbox = $/root/Node2D/Textbox
 @onready var music_player_1 = $/root/Node2D/AudioStreamPlayer
 @onready var music_player_2 = $/root/Node2D/AudioStreamPlayer2
@@ -14,8 +13,12 @@ func _ready():
 var music_tween: Tween
 
 func _on_body_entered(body):
-	if body is CharacterBody2D:  # Ensure it's the player
-		#show title screen, wait to queue text until player presses button
+
+	#ensure it's the player and that the cutscene hasn't been seen yet
+	if body.is_in_group("Player"):  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
+		
+		#don't need to mark as seen since this is the ending lol
+
 		
 		if music_tween:
 			music_tween.kill()
@@ -91,4 +94,4 @@ func _process(delta: float) -> void:
 		print("Character inside: ", character_inside)
 		
 		if textbox.current_state == textbox.State.READY and textbox.text_queue.is_empty():
-			get_tree().change_scene_to_file("res://credits.tscn")
+			get_tree().change_scene_to_file("res://scenes/UI/credits.tscn")'''
