@@ -1,25 +1,60 @@
 extends Area2D
 
-#Cutscene 6 for level 3
+#Cutscene 3 for level 3
 
 @onready var textbox = $/root/Node2D/Textbox
+@onready var sprite = $Sprite2D
+@onready var enter_prompt = $AnimatedSprite2D
+
 @onready var music_player_1 = $/root/Node2D/AudioStreamPlayer
 @onready var music_player_2 = $/root/Node2D/AudioStreamPlayer2
 
-@onready var character_inside = false
 @onready var initialized = false
+
+@onready var triggered_once = false
+
+var player_inside = null
+var cutscene_triggered = false
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	enter_prompt.hide()
 	initialized = true
 
 var music_tween: Tween
 
 func _on_body_entered(body):
 	#ensure it's the player and that the cutscene hasn't been seen yet
-	if body is CharacterBody2D:  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
+	if body.is_in_group("Player"):  
+		player_inside = body  # Store player reference
+		set_outline(true)
+		enter_prompt.show()
+		enter_prompt.play("default")
+	print(cutscene_triggered)
 		
-		#don't need to mark as seen since this is the ending lol
+		
+func _on_body_exited(body):
+	# Remove reference when player leaves
+	if body == player_inside:
+		player_inside = null
+		set_outline(false)
+		enter_prompt.stop()
+		enter_prompt.hide()
+	print(cutscene_triggered)
+	
+func set_outline(enable: bool):
+	if enable:
+		sprite.self_modulate = Color(1.2, 1.2, 1.2, 1)  # Brighten the sprite slightly
+	else:
+		sprite.self_modulate = Color(1, 1, 1, 1)  # Reset to normal colo
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	# Check for input only if player is inside
+	if player_inside and Input.is_action_just_pressed("Enter") and not cutscene_triggered:
+		cutscene_triggered = true
+		
 		
 		#end old music
 		if music_tween:
@@ -74,9 +109,7 @@ func _on_body_entered(body):
 		textbox.queue_text("")
 		textbox.queue_text("[THE END]")
 		
-		
-		#bandaid fix so that the ending screen doesn't immediately show when the final cutscene starts. it's stupid just don't touch it
-		character_inside = true
+		triggered_once = true
 		
 		#fade in new music
 		music_player_2.volume_db = -40  # start silent
@@ -88,13 +121,14 @@ func _on_body_entered(body):
 		await music_tween.finished
 		music_player_1.stop()
 		
+	if textbox.current_state == textbox.State.READY and textbox.text_queue.is_empty():
+		cutscene_triggered = false
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if initialized and character_inside:
+	if initialized and player_inside and triggered_once:
 		print("Current state: ", textbox.current_state)
 		print("Text queue empty: ", textbox.text_queue.is_empty())
-		print("Character inside: ", character_inside)
+		print("Player inside: ", player_inside)
 		
 		if textbox.current_state == textbox.State.READY and textbox.text_queue.is_empty():
 			get_tree().change_scene_to_file("res://scenes/UI/credits.tscn")
+		

@@ -39,7 +39,7 @@ func show_title_screen() -> void:
 func _on_button1_pressed():
 	print("Begin pressed!")
 	hide_title_screen()
-	get_tree().change_scene_to_file("res://scenes/main/levels/level 3/node_2d.tscn")
+	get_tree().change_scene_to_file("res://scenes/main/levels/level 1(3 duplicate)/node_2d.tscn")
 
 func _on_button2_pressed():
 	print("Credits pressed!")

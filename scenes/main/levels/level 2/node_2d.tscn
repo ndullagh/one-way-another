@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://h3vnqi0b0xbu" path="res://bgs/mid.png" id="3_wahjx"]
 [ext_resource type="Texture2D" uid="uid://c3by4quto6g0v" path="res://bgs/near.png" id="4_f02uh"]
 [ext_resource type="Texture2D" uid="uid://c6lvfsr0jnpfj" path="res://bgs/overlay.png" id="5_ntni5"]
-[ext_resource type="PackedScene" uid="uid://crppt6mcgws28" path="res://scenes/main/kol/kolFLying.tscn" id="6_7q4o3"]
+[ext_resource type="PackedScene" uid="uid://xg62lg37olxj" path="res://scenes/main/kol/kolFLying.tscn" id="6_7q4o3"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="7_jqoww"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 2/kolFlying.gd" id="7_nvcch"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="8_0qc7k"]

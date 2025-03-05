@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbovq6eqq8u4s"]
+
+[ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/projectile.gd" id="1_dhixj"]
+[ext_resource type="Texture2D" uid="uid://cgxgtaibfkyaw" path="res://other_sprites/bullets/enemy/1.png" id="2_wqa0v"]
+[ext_resource type="Texture2D" uid="uid://742ld73160m6" path="res://other_sprites/bullets/enemy/2.png" id="3_r3vo8"]
+[ext_resource type="Texture2D" uid="uid://cnh2wv551us2a" path="res://other_sprites/bullets/enemy/3.png" id="4_lv00f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj1ym"]
+size = Vector2(5.625, 5.625)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ao4bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wqa0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r3vo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lv00f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="Node2D"]
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(-2.8, -2.8)
+script = ExtResource("1_dhixj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2.8, 2.8)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_yj1ym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hitbox"]
+scale = Vector2(0.41875, 0.41875)
+sprite_frames = SubResource("SpriteFrames_ao4bf")
+autoplay = "default"
+frame = 1
+frame_progress = 0.113691
+
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
