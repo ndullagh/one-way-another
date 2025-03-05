@@ -1,13 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://copmmitlkqqh5"]
+[gd_scene load_steps=4 format=3 uid="uid://b5r1vbo7mb6wq"]
+
+[ext_resource type="Texture2D" path="res://other_sprites/prompts/enter/1.png" id="1_oj10m"]
+[ext_resource type="Texture2D" path="res://other_sprites/prompts/enter/2.png" id="2_brvju"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_drmq2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("1_oj10m")
 }, {
 "duration": 1.0,
-"texture": null
+"texture": ExtResource("2_brvju")
 }],
 "loop": true,
 "name": &"default",

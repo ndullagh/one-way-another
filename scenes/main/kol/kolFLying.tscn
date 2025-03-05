@@ -1,13 +1,20 @@
-[gd_scene load_steps=42 format=3 uid="uid://xg62lg37olxj"]
+[gd_scene load_steps=49 format=3 uid="uid://crppt6mcgws28"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]
+[ext_resource type="Texture2D" uid="uid://dv2k6vrsfwnt" path="res://charsprites/flying/boost/1.png" id="2_ksn4n"]
+[ext_resource type="Texture2D" uid="uid://bub3td73xw3wr" path="res://charsprites/flying/boost/2.png" id="3_435m6"]
 [ext_resource type="Texture2D" uid="uid://mjoh57bkixb6" path="res://charsprites/jumpfall/jumpfall/fl/fl2.png" id="3_dwmnj"]
 [ext_resource type="Texture2D" uid="uid://bg6l15k75tf57" path="res://charsprites/jumpfall/jumpfall/fr/fr1.png" id="4_h2vxc"]
+[ext_resource type="Texture2D" uid="uid://dem0237m5udkm" path="res://charsprites/flying/boost/3.png" id="4_ph4ir"]
 [ext_resource type="Texture2D" uid="uid://4jsdoai6hxav" path="res://charsprites/jumpfall/jumpfall/fr/fr2.png" id="5_jp67k"]
+[ext_resource type="Texture2D" uid="uid://c2o5wr2jjbp1x" path="res://charsprites/flying/boost/4.png" id="5_pvpuc"]
 [ext_resource type="Texture2D" uid="uid://cc1hh36hsngtp" path="res://charsprites/il/l/il1.png" id="6_6fk8i"]
+[ext_resource type="Texture2D" uid="uid://c85mwhoik4o24" path="res://charsprites/flying/flying/1.png" id="6_qm68f"]
+[ext_resource type="Texture2D" uid="uid://dj3yim1ne4vdx" path="res://charsprites/flying/flying/2.png" id="7_qsos8"]
 [ext_resource type="Texture2D" uid="uid://bwbnevdnpdyhj" path="res://charsprites/il/l/il2.png" id="7_twqvv"]
 [ext_resource type="Texture2D" uid="uid://d2m1o3gfqnuqy" path="res://charsprites/il/l/il3.png" id="8_jiw50"]
+[ext_resource type="Texture2D" uid="uid://dfiknii587r4c" path="res://charsprites/flying/flying/3.png" id="8_jm87l"]
 [ext_resource type="Texture2D" uid="uid://c64oyd8mj4m2k" path="res://charsprites/il/l/il4.png" id="9_idyoc"]
 [ext_resource type="Texture2D" uid="uid://cjdhdiltivcd5" path="res://charsprites/ir/r/ir1.png" id="10_a0q0y"]
 [ext_resource type="Texture2D" uid="uid://bx0ubkuiobliv" path="res://charsprites/ir/r/ir2.png" id="11_2g56o"]
@@ -44,6 +51,26 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_ksn4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_435m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ph4ir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pvpuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ph4ir")
+}],
+"loop": false,
+"name": &"boost",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_jxpdj")
 }, {
 "duration": 1.0,
@@ -63,6 +90,20 @@ animations = [{
 "loop": true,
 "name": &"fall_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qm68f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qsos8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jm87l")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -198,10 +239,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8fbx"]
-size = Vector2(77.5, 171)
+size = Vector2(66.9801, 157.583)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(621, 126)
+rotation = 0.785398
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0derk")
@@ -210,9 +252,16 @@ script = ExtResource("1_0derk")
 position = Vector2(10, 7)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kkhdi")
-animation = &"idle_right"
+animation = &"boost"
+autoplay = "flying"
 offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25.25, 22)
+position = Vector2(17.6127, 17.1816)
+rotation = 0.701622
 shape = SubResource("RectangleShape2D_t8fbx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(19.0919, 14.8492)
+rotation = 0.645772
+scale = Vector2(3.8, 4.5)
