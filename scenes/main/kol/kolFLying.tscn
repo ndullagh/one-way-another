@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://xg62lg37olxj"]
+[gd_scene load_steps=49 format=3 uid="uid://crppt6mcgws28"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]
@@ -239,10 +239,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8fbx"]
-size = Vector2(77.5, 171)
+size = Vector2(66.9801, 157.583)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(621, 126)
+rotation = 0.785398
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_0derk")
@@ -256,9 +257,11 @@ autoplay = "flying"
 offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(25.25, 22)
+position = Vector2(17.6127, 17.1816)
+rotation = 0.701622
 shape = SubResource("RectangleShape2D_t8fbx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(26, 22)
+position = Vector2(19.0919, 14.8492)
+rotation = 0.645772
 scale = Vector2(3.8, 4.5)
