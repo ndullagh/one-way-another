@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbh1ku1geg23"]
+
+[ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/enemy.gd" id="1_6yepf"]
+[ext_resource type="Texture2D" uid="uid://bhkivry6ihwkc" path="res://enemy_sprites/ground1/idle/1.png" id="2_n1vhe"]
+[ext_resource type="Texture2D" uid="uid://8yk1a4062soc" path="res://enemy_sprites/ground1/idle/2.png" id="3_c1ihw"]
+[ext_resource type="Texture2D" uid="uid://dku5xeduilxeb" path="res://enemy_sprites/ground1/idle/3.png" id="4_hn151"]
+[ext_resource type="Texture2D" uid="uid://bxuuti222elok" path="res://enemy_sprites/ground1/jump/2.png" id="5_3icvi"]
+[ext_resource type="Texture2D" uid="uid://c4rxfstqm43p6" path="res://enemy_sprites/ground1/jump/4.png" id="6_s1rsc"]
+[ext_resource type="Texture2D" uid="uid://d322y45q2j0mb" path="res://enemy_sprites/ground1/jump/3.png" id="7_f7r8v"]
+[ext_resource type="Texture2D" uid="uid://cbqtllu312c2s" path="res://enemy_sprites/ground1/jump/1.png" id="8_u4bsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc03d"]
+size = Vector2(191, 152)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0pam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n1vhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c1ihw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n1vhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hn151")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3icvi")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_s1rsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f7r8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3icvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u4bsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u4bsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u4bsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u4bsx")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 12.0
+}]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_6yepf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_jc03d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.464844, 0.464844)
+sprite_frames = SubResource("SpriteFrames_y0pam")
+animation = &"jump"
+autoplay = "default"
+
+[node name="ShootPoint" type="Node2D" parent="."]
+position = Vector2(-103, -53)
