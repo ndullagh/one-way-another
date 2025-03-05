@@ -1,11 +1,11 @@
-[gd_scene load_steps=27 format=4 uid="uid://dwcvrli657a23"]
+[gd_scene load_steps=29 format=4 uid="uid://dwcvrli657a23"]
 
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_qkb7b"]
 [ext_resource type="Texture2D" uid="uid://cw0skkipjferr" path="res://bgs/far.png" id="2_iukvc"]
 [ext_resource type="Texture2D" uid="uid://h3vnqi0b0xbu" path="res://bgs/mid.png" id="3_wahjx"]
 [ext_resource type="Texture2D" uid="uid://c3by4quto6g0v" path="res://bgs/near.png" id="4_f02uh"]
 [ext_resource type="Texture2D" uid="uid://c6lvfsr0jnpfj" path="res://bgs/overlay.png" id="5_ntni5"]
-[ext_resource type="PackedScene" uid="uid://xg62lg37olxj" path="res://scenes/main/kol/kolFLying.tscn" id="6_7q4o3"]
+[ext_resource type="PackedScene" uid="uid://crppt6mcgws28" path="res://scenes/main/kol/kolFLying.tscn" id="6_7q4o3"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="7_jqoww"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 2/kolFlying.gd" id="7_nvcch"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="8_0qc7k"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scenes/main/levels/level 2/enemyFlying.gd" id="12_5qmre"]
 [ext_resource type="Script" path="res://scripts/UI/textbox2-lvl2.gd" id="13_7ygg8"]
 [ext_resource type="Script" path="res://scenes/main/levels/level 2/spinningSpikes.gd" id="13_m3bp4"]
+[ext_resource type="Script" path="res://scripts/main/levels/level 2/transition_area2.gd" id="20_lc1xb"]
 [ext_resource type="PackedScene" uid="uid://bn3b3lf76tt65" path="res://scenes/UI/death_screen.tscn" id="22_b5o4v"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="23_p7kb4"]
 [ext_resource type="AudioStream" uid="uid://dcg6ju0cipyin" path="res://music/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg" id="24_wbd2s"]
@@ -112,6 +113,9 @@ sources/0 = SubResource("TileSetAtlasSource_vrpgm")
 sources/2 = SubResource("TileSetAtlasSource_vk4b7")
 sources/4 = SubResource("TileSetAtlasSource_hg0w7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q35jg"]
+size = Vector2(316.5, 1266.5)
+
 [node name="Node2D2" type="Node2D"]
 
 [node name="BG" type="ParallaxBackground" parent="."]
@@ -172,7 +176,7 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAFD+/wQAAAAAAAAAAFD+/wUAAAAAAAA
 tile_set = SubResource("TileSet_pbcws")
 
 [node name="Flying Kol" parent="." instance=ExtResource("6_7q4o3")]
-position = Vector2(1000, 240)
+position = Vector2(17725, 284)
 script = ExtResource("7_nvcch")
 
 [node name="SpikeLayer" type="TileMapLayer" parent="."]
@@ -385,7 +389,6 @@ tile_map_data = PackedByteArray("AACEAP//AAAAAAAAAFCEAP7/AAAAAAAAAFCEAAAAAAAAAAA
 tile_set = SubResource("TileSet_pbcws")
 
 [node name="Textbox" parent="." instance=ExtResource("10_ibf6f")]
-visible = false
 script = ExtResource("13_7ygg8")
 
 [node name="death_screen" parent="." instance=ExtResource("22_b5o4v")]
@@ -402,3 +405,11 @@ parameters/looping = true
 
 [node name="Test" type="Node2D" parent="."]
 position = Vector2(3485, 244)
+
+[node name="text_area6" type="Area2D" parent="."]
+position = Vector2(17787, -287)
+script = ExtResource("20_lc1xb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_q35jg")
