@@ -14,6 +14,8 @@ var can_shoot: bool = true
 @export var projectile_scene: PackedScene
 @onready var shoot_point = $ShootPoint
 
+@onready var sprite = $AnimatedSprite2D
+
 var direction: int = 0  # -1 for left, 1 for right
 @export var gravity: float = 980  # Gravity strength (adjust as needed)
 
@@ -21,13 +23,19 @@ func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if velocity.y >= 0:
+			sprite.play("fall")
+	else:
+		sprite.play("default")
 
 	# Move left or right toward the player
 	if player:
 		if player.global_position.x < global_position.x:
 			direction = -1  # Move left
+			sprite.flip_h = false
 		else:
 			direction = 1  # Move right
+			sprite.flip_h = true
 
 		velocity.x = direction * speed  # Continue normal movement
 
@@ -43,6 +51,7 @@ func _physics_process(delta):
 	# If stuck for too long, jump
 	if stuck_timer >= stuck_threshold:
 		velocity.y = jump_velocity
+		sprite.animation = "jump"
 		stuck_timer = 0.1  # Reset timer after jumping
 
 	# Update previous position for next frame
@@ -67,6 +76,7 @@ func shoot_projectile():
 		var hitbox = projectile.get_node("Hitbox")
 		if hitbox:
 			hitbox.direction = Vector2.LEFT if direction == -1 else Vector2.RIGHT
+			projectile.get_node("Hitbox/AnimatedSprite2D").flip_h = direction == -1
 
 		# Start cooldown timer
 		await get_tree().create_timer(shoot_cooldown).timeout

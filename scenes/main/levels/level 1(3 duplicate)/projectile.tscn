@@ -1,11 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbtg7stpmp3sj"]
 
 [ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/projectile.gd" id="1_i6fr6"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_caoqr"]
+[ext_resource type="Texture2D" uid="uid://dy61j8y77lnvi" path="res://other_sprites/bullets/kol.png" id="2_6rcdc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yj1ym"]
-size = Vector2(5.625, 5.625)
+size = Vector2(35, 17.5)
 
 [node name="Projectile" type="Node2D"]
 
@@ -16,11 +15,12 @@ script = ExtResource("1_i6fr6")
 [node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
 position = Vector2(2.8, 2.8)
 rotation = 3.14159
-scale = Vector2(4.42137, 4.42137)
-texture = SubResource("PlaceholderTexture2D_caoqr")
+scale = Vector2(0.305914, 0.305914)
+texture = ExtResource("2_6rcdc")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(2.8, 2.8)
+position = Vector2(2.8, 5.8)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_yj1ym")
 

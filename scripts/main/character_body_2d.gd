@@ -6,7 +6,9 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene  # Reference to the projectile scene
 @onready var shoot_position = $ShootPoint  # Position from where bullets spawn
 
+
 @onready var sprite = $AnimatedSprite2D  # Make sure this matches your node's path
+@onready var gun_sprite = $AnimatedSprite2D2
 @onready var death_screen = $/root/Node2D/death_screen
 
 @export var coyote_time: float = 0.1  # time allowed to jump after falling
@@ -25,6 +27,14 @@ var jumps_left = max_jumps
 
 var facing_right = true  # track player's facing direction
 
+
+func _ready():
+	gun_sprite.animation_finished.connect(_on_animation_finished)
+	
+
+func _on_animation_finished():
+	if gun_sprite.animation == "default":
+		gun_sprite.animation = "hidden"
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -107,11 +117,15 @@ func update_animation(direction: float, delta: float) -> void:
 		
 func shoot_projectile():
 	if projectile_scene:
+		gun_sprite.play("default")
 		var projectile = projectile_scene.instantiate()
 		get_parent().add_child(projectile)
 		projectile.global_position = shoot_position.global_position
-
+		
 		# Get the Hitbox node inside the projectile
 		var hitbox = projectile.get_node("Hitbox")  # Make sure "Hitbox" is the correct name
 		if hitbox:
 			hitbox.direction = Vector2.RIGHT if facing_right else Vector2.LEFT
+		projectile.get_node("Hitbox/Sprite2D").flip_h = facing_right
+		gun_sprite.flip_h = not facing_right
+		gun_sprite.position.x = 100 if facing_right else -100

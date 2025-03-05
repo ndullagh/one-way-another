@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/main/death_zone.gd" id="1_3laer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyys6"]
-size = Vector2(2878, 590)
+size = Vector2(10770, 590)
 
 [node name="Area2D" type="Area2D"]
 position = Vector2(3885, 1303)
 script = ExtResource("1_3laer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(889, 826)
+position = Vector2(4835, 826)
 shape = SubResource("RectangleShape2D_xyys6")
