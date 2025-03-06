@@ -364,12 +364,10 @@ counterClockwise = true
 [node name="SpinngSpikes" type="TileMapLayer" parent="Spinning Spike2"]
 position = Vector2(13150, -250)
 scale = Vector2(-1, 1)
-tile_map_data = PackedByteArray("AACDAAIAAgAAAAEAAACDAAMAAgAHAAEAAGCEAAIAAgAHAAEAADCFAAIAAgAGAAEAADCGAAIAAgAGAAEAADCDAAEAAgAHAAEAAFCCAAIAAgAHAAEAAACHAAIAAgAGAAEAADCDAP7/AgAGAAEAAFCDAP//AgAGAAEAAFCDAAAAAgAGAAEAAFB/AAIAAgAGAAEAAACAAAIAAgAGAAEAAACBAAIAAgAGAAEAAACDAAQAAgAGAAEAAGCDAAUAAgAGAAEAAGCDAAYAAgAGAAEAAGA=")
 tile_set = SubResource("TileSet_u3xhy")
 navigation_visibility_mode = 1
 
 [node name="SpikeLayerFlyingEnemies10" type="TileMapLayer" parent="Spinning Spike2/SpinngSpikes"]
-tile_map_data = PackedByteArray("AACEAP//AAAAAAAAAFCEAP7/AAAAAAAAAFCEAAAAAAAAAAAAAFCEAAEAAAAAAAAAAFCEAAMAAAAAAAAAADCFAAMAAAAAAAAAADCGAAMAAAAAAAAAADCHAAMAAAAAAAAAADCCAAMAAAAAAAAAAGCCAAQAAAAAAAAAAGCCAAUAAAAAAAAAAGCCAAYAAAAAAAAAAGB/AAEAAAAAAAAAAACAAAEAAAAAAAAAAACBAAEAAAAAAAAAAACCAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_pbcws")
 
 [node name="Spinning Spike3" type="Node2D" parent="."]
@@ -389,11 +387,9 @@ tile_map_data = PackedByteArray("AACEAP//AAAAAAAAAFCEAP7/AAAAAAAAAFCEAAAAAAAAAAA
 tile_set = SubResource("TileSet_pbcws")
 
 [node name="Textbox" parent="." instance=ExtResource("10_ibf6f")]
-visible = false
 script = ExtResource("13_7ygg8")
 
 [node name="death_screen" parent="." instance=ExtResource("22_b5o4v")]
-visible = false
 script = ExtResource("23_p7kb4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
