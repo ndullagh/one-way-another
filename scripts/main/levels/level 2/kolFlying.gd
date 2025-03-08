@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 @export var ACCELERATION: float = 5000 # how fast you reach max speed
 @export var FRICTION: float = 6000  # How fast you slow down
+@export var spawnPoint: spawnPoint
 
 var boost_timer: float = 0
 var boost_cooldown: float = 0
@@ -22,7 +23,11 @@ const BOOST = 10000
 
 var facing_right = true  # track player's facing direction
 
-
+func _ready() -> void:
+	if (spawnPoint.spawnPointVar):
+		global_position = spawnPoint.spawnPointVar
+	pass
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():

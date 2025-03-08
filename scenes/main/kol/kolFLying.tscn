@@ -241,7 +241,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8fbx"]
 size = Vector2(66.9801, 157.583)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(621, 126)
 rotation = 0.785398
 collision_layer = 3
