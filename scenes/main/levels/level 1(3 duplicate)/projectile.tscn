@@ -11,6 +11,7 @@ size = Vector2(35, 17.5)
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(-2.8, -2.8)
 script = ExtResource("1_i6fr6")
+speed = 1000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
 position = Vector2(2.8, 2.8)

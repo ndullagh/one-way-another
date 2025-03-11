@@ -81,3 +81,8 @@ func shoot_projectile():
 		# Start cooldown timer
 		await get_tree().create_timer(shoot_cooldown).timeout
 		can_shoot = true  # Allow shooting again
+		
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):  # If the enemy collides with the player
+		body.die()  # Call the player's death function
+		

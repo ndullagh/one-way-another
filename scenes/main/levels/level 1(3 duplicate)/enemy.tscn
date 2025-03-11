@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cbqtllu312c2s" path="res://enemy_sprites/ground1/jump/1.png" id="8_u4bsx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc03d"]
-size = Vector2(191, 152)
+size = Vector2(184, 146)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y0pam"]
 animations = [{
@@ -69,8 +69,8 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_6yepf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 0)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 3)
 shape = SubResource("RectangleShape2D_jc03d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -81,3 +81,11 @@ autoplay = "default"
 
 [node name="ShootPoint" type="Node2D" parent="."]
 position = Vector2(-103, -53)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_jc03d")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
