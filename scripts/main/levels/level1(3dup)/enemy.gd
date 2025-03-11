@@ -8,8 +8,10 @@ var stuck_timer: float = 0.05
 @export var jump_velocity: float = -500  # Adjust as needed
 @export var jump_check_distance: float = 14.0  # Distance to check for walls
 
+@onready var death_screen = $/root/Node2D/death_screen
+
 var can_shoot: bool = true
-@export var shoot_cooldown: float = 0.9  # Time between shots in seconds
+@export var shoot_cooldown: float = 2 # Time between shots in seconds
 
 @export var projectile_scene: PackedScene
 @onready var shoot_point = $ShootPoint
@@ -25,15 +27,17 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		if velocity.y >= 0:
 			sprite.play("fall")
+	elif velocity.x != 0:
+		sprite.play("walk")
 	else:
 		sprite.play("default")
 
 	# Move left or right toward the player
 	if player:
-		if player.global_position.x < global_position.x:
+		if player.global_position.x < global_position.x and abs(player.global_position.x - global_position.x) < 800:
 			direction = -1  # Move left
 			sprite.flip_h = false
-		else:
+		elif abs(player.global_position.x - global_position.x) < 800:
 			direction = 1  # Move right
 			sprite.flip_h = true
 
@@ -49,7 +53,7 @@ func _physics_process(delta):
 		stuck_timer = 0.1  # Reset timer if moving
 
 	# If stuck for too long, jump
-	if stuck_timer >= stuck_threshold:
+	if stuck_timer >= stuck_threshold and abs(player.global_position.x - global_position.x) < 800:
 		velocity.y = jump_velocity
 		sprite.animation = "jump"
 		stuck_timer = 0.1  # Reset timer after jumping
@@ -62,7 +66,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	if player:
-		if abs(player.global_position.x - global_position.x) < 300:  # Enemy shoots when close
+		if abs(player.global_position.x - global_position.x) < 500:  # Enemy shoots when close
 			shoot_projectile()
 
 func shoot_projectile():
@@ -84,5 +88,6 @@ func shoot_projectile():
 		
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):  # If the enemy collides with the player
+		death_screen.show_death_screen()
 		body.die()  # Call the player's death function
 		

@@ -77,6 +77,8 @@ func show_textbox() -> void:
 	start_symbol.text = "*"
 	textbox_container.show()
 	character.set_physics_process(false)
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.set_physics_process(false)
 	sprite.play("idle_right")
 	sprite.position.y = 0
 	sprite.scale = Vector2(.5, .5)
