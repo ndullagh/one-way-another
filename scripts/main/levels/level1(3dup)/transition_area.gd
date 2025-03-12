@@ -17,6 +17,9 @@ func _on_body_entered(body):
 	#ensure it's the player and that the cutscene hasn't been seen yet
 	if body is CharacterBody2D:  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
 		textbox.queue_text("Level 1 Completion Cutscene Placeholder")
+		textbox.queue_text("Transition to Level 2")
+		textbox.queue_text("[LEVEL 2 CONTROLS]")
+		textbox.queue_text("[Fly: WASD/Arrows, Boost: SPACE]")
 		
 		#bandaid fix so that the ending screen doesn't immediately show when the final cutscene starts. it's stupid just don't touch it
 		character_inside = true

@@ -14,7 +14,10 @@ func _ready():
 func _on_body_entered(body):
 	print("ENTERED")
 	if body is CharacterBody2D:  # IF PLAYER IS NO LONGER THE *ONLY* CHARCTER_BODY_2D, THIS WILL NEED TO CHANGE
-		body.die()
+		if body.is_in_group("enemy"):  # If it hits an enemy, destroy the enemy
+			body.queue_free()
+		elif body.is_in_group("Player"):  # If it hits the player, trigger death
+			body.die()
 		death_screen.show_death_screen()
 		textbox.text_queue = []
 		textbox.hide_textbox()

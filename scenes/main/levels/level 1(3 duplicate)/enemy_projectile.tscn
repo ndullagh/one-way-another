@@ -27,7 +27,7 @@ animations = [{
 
 [node name="Projectile" type="Node2D"]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["en_projectile"]]
 position = Vector2(-2.8, -2.8)
 script = ExtResource("1_dhixj")
 

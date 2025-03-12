@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbh1ku1geg23"]
+[gd_scene load_steps=22 format=3 uid="uid://dbh1ku1geg23"]
 
 [ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/enemy.gd" id="1_6yepf"]
 [ext_resource type="Texture2D" uid="uid://bhkivry6ihwkc" path="res://enemy_sprites/ground1/idle/1.png" id="2_n1vhe"]
@@ -8,9 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://c4rxfstqm43p6" path="res://enemy_sprites/ground1/jump/4.png" id="6_s1rsc"]
 [ext_resource type="Texture2D" uid="uid://d322y45q2j0mb" path="res://enemy_sprites/ground1/jump/3.png" id="7_f7r8v"]
 [ext_resource type="Texture2D" uid="uid://cbqtllu312c2s" path="res://enemy_sprites/ground1/jump/1.png" id="8_u4bsx"]
+[ext_resource type="Texture2D" uid="uid://d2pey8sng1p5q" path="res://enemy_sprites/ground1/walk/1.png" id="9_8dveg"]
+[ext_resource type="Texture2D" uid="uid://dclwtbsnt7iu4" path="res://enemy_sprites/ground1/walk/2.png" id="10_t1itq"]
+[ext_resource type="Texture2D" uid="uid://0e7scml2g66i" path="res://enemy_sprites/ground1/walk/3.png" id="11_qi6fo"]
+[ext_resource type="Texture2D" uid="uid://dppctwalk5ssd" path="res://enemy_sprites/ground1/walk/4.png" id="12_qjfyr"]
+[ext_resource type="Texture2D" uid="uid://dr7wlkg3n7fai" path="res://enemy_sprites/ground1/walk/5.png" id="13_5i6u8"]
+[ext_resource type="Texture2D" uid="uid://k0ajb3bca6n7" path="res://enemy_sprites/ground1/walk/6.png" id="14_lledr"]
+[ext_resource type="Texture2D" uid="uid://jaceyvln8c3f" path="res://enemy_sprites/ground1/walk/7.png" id="15_2xr7y"]
+[ext_resource type="Texture2D" uid="uid://bfrlba6b4iapo" path="res://other_sprites/explosion.png" id="16_2fp53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc03d"]
-size = Vector2(191, 152)
+size = Vector2(93, 146)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y0pam"]
 animations = [{
@@ -64,20 +72,83 @@ animations = [{
 "loop": false,
 "name": &"jump",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_8dveg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t1itq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qi6fo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qjfyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5i6u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lledr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2xr7y")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_162w1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d764m"]
+gradient = SubResource("Gradient_162w1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rrkq0"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 157.14
+initial_velocity_max = 376.05
+gravity = Vector3(0, 0, 0)
+damping_min = 21.714
+damping_max = 36.857
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_d764m")
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_6yepf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 0)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-6, 3)
 shape = SubResource("RectangleShape2D_jc03d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.464844, 0.464844)
 sprite_frames = SubResource("SpriteFrames_y0pam")
-animation = &"jump"
+animation = &"walk"
 autoplay = "default"
+frame_progress = 0.114031
 
 [node name="ShootPoint" type="Node2D" parent="."]
 position = Vector2(-103, -53)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_jc03d")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_rrkq0")
+texture = ExtResource("16_2fp53")
+lifetime = 0.4
+one_shot = true
+randomness = 0.3
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

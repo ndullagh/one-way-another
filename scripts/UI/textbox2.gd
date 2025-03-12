@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var background_2 = $Background2
 @onready var background_0 = $Background0
 
+@onready var textbox_hidden = true
+
 #bg 1 is in use by default
 var current_background = 1
 
@@ -63,6 +65,11 @@ func _process(delta: float) -> void:
 				hide_textbox()
 				if text_queue.is_empty():
 					character.set_physics_process(true)
+					for enemy in get_tree().get_nodes_in_group("enemy"):
+						enemy.set_physics_process(true)
+						enemy.can_shoot = true
+					for proj in get_tree().get_nodes_in_group("en_projectile"):
+						proj.unfreeze()
 					background_1.hide()
 					background_2.hide()
 					background_0.hide()
@@ -72,11 +79,19 @@ func hide_textbox() -> void:
 	end_symbol.text = ""
 	label.text = ""
 	textbox_container.hide()
+	textbox_hidden = true
 
 func show_textbox() -> void:
 	start_symbol.text = "*"
 	textbox_container.show()
 	character.set_physics_process(false)
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		enemy.set_physics_process(false)
+		enemy.can_shoot = false
+	textbox_hidden = false
+	for proj in get_tree().get_nodes_in_group("en_projectile"):
+		proj.freeze()
+		proj.queue_free()
 	sprite.play("idle_right")
 	sprite.position.y = 0
 	sprite.scale = Vector2(.5, .5)

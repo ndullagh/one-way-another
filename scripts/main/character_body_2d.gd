@@ -27,10 +27,18 @@ var jumps_left = max_jumps
 
 var facing_right = true  # track player's facing direction
 
+var shoot_cooldown = .4
+var can_shoot = true
+var animation_locked = false
+
 
 func _ready():
 	gun_sprite.animation_finished.connect(_on_animation_finished)
-	
+	sprite.animation_finished.connect(_on_shoot_animation_finished)
+
+func _on_shoot_animation_finished():
+	if sprite.animation == "shoot" or sprite.animation == "shoot_left" or sprite.animation == "jump_shoot_right" or sprite.animation == "jump_shoot_left":  # Only unlock if it was the shoot animation
+		animation_locked = false  
 
 func _on_animation_finished():
 	if gun_sprite.animation == "default":
@@ -74,13 +82,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		# apply friction when no input
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
-	
-	
-	if Input.is_action_just_pressed("shoot"):
-		shoot_projectile()
 		
 	# Update animation
-	update_animation(direction, delta)
+	if not animation_locked:
+		update_animation(direction, delta)
 	
 	move_and_slide()
 
@@ -89,6 +94,31 @@ func _physics_process(delta: float) -> void:
 		print("Collided with:", collision.get_collider().name)
 		death_screen.show_death_screen()
 		die()
+	if can_shoot and Input.is_action_just_pressed("shoot"):
+		if not is_on_floor():
+			if facing_right:
+				sprite.play("jump_shoot_right")
+			else:
+				sprite.play("jump_shoot_left")
+			animation_locked = true
+		elif direction == 0:
+			if facing_right:
+				sprite.play("shoot")
+			else:
+				sprite.play("shoot_left")
+			animation_locked = true
+		shoot_projectile()
+			
+		
+		can_shoot = false  # Prevent shooting again immediately
+		
+		# Set a timer to re-enable movement after the shoot animation duration
+		await get_tree().create_timer(0.3).timeout  # Adjust duration as needed
+
+		# Set cooldown for shooting
+		await get_tree().create_timer(shoot_cooldown).timeout
+		can_shoot = true
+		
 
 func die():
 	set_physics_process(false)  # disable movement
