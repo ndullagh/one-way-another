@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
 @export var speed: float = 100  # Adjust movement speed
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = get_tree().get_first_node_in_group("Player")
 var previous_position: Vector2
 var stuck_timer: float = 0.05
 @export var stuck_threshold: float = 0.2  # Time before jumping when stuck
 @export var jump_velocity: float = -500  # Adjust as needed
 @export var jump_check_distance: float = 14.0  # Distance to check for walls
 
+
 @onready var death_screen = $/root/Node2D/death_screen
+@onready var textbox = $/root/Node2D/Textbox
 
 var can_shoot: bool = true
 @export var shoot_cooldown: float = 2 # Time between shots in seconds
@@ -34,10 +36,10 @@ func _physics_process(delta):
 
 	# Move left or right toward the player
 	if player:
-		if player.global_position.x < global_position.x and abs(player.global_position.x - global_position.x) < 800:
+		if player.global_position.x < global_position.x and sqrt(pow(abs(player.global_position.x - global_position.x), 2) + pow(abs(player.global_position.y - global_position.y), 2)) < 800:
 			direction = -1  # Move left
 			sprite.flip_h = false
-		elif abs(player.global_position.x - global_position.x) < 800:
+		elif sqrt(pow(abs(player.global_position.x - global_position.x), 2) + pow(abs(player.global_position.y - global_position.y), 2)) < 800:
 			direction = 1  # Move right
 			sprite.flip_h = true
 
@@ -66,11 +68,11 @@ func _physics_process(delta):
 
 func _process(delta):
 	if player:
-		if abs(player.global_position.x - global_position.x) < 500:  # Enemy shoots when close
+		if sqrt(pow(abs(player.global_position.x - global_position.x), 2) + pow(abs(player.global_position.y - global_position.y), 2)) < 500:  # Enemy shoots when close
 			shoot_projectile()
 
 func shoot_projectile():
-	if can_shoot and projectile_scene:
+	if can_shoot and projectile_scene and textbox.textbox_hidden == true:
 		can_shoot = false  # Prevent immediate shooting again
 		var projectile = projectile_scene.instantiate()
 		get_parent().add_child(projectile)
@@ -83,11 +85,12 @@ func shoot_projectile():
 			projectile.get_node("Hitbox/AnimatedSprite2D").flip_h = direction == -1
 
 		# Start cooldown timer
-		await get_tree().create_timer(shoot_cooldown).timeout
+		var timer = get_tree().create_timer(shoot_cooldown)
+		await timer.timeout
 		can_shoot = true  # Allow shooting again
 		
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):  # If the enemy collides with the player
+	if body.is_in_group("Player"):  # If the enemy collides with the player
 		death_screen.show_death_screen()
 		body.die()  # Call the player's death function
 		

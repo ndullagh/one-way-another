@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbh1ku1geg23"]
+[gd_scene load_steps=22 format=3 uid="uid://dbh1ku1geg23"]
 
 [ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/enemy.gd" id="1_6yepf"]
 [ext_resource type="Texture2D" uid="uid://bhkivry6ihwkc" path="res://enemy_sprites/ground1/idle/1.png" id="2_n1vhe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dr7wlkg3n7fai" path="res://enemy_sprites/ground1/walk/5.png" id="13_5i6u8"]
 [ext_resource type="Texture2D" uid="uid://k0ajb3bca6n7" path="res://enemy_sprites/ground1/walk/6.png" id="14_lledr"]
 [ext_resource type="Texture2D" uid="uid://jaceyvln8c3f" path="res://enemy_sprites/ground1/walk/7.png" id="15_2xr7y"]
+[ext_resource type="Texture2D" uid="uid://bfrlba6b4iapo" path="res://other_sprites/explosion.png" id="16_2fp53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc03d"]
 size = Vector2(93, 146)
@@ -99,6 +100,25 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_162w1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d764m"]
+gradient = SubResource("Gradient_162w1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rrkq0"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 157.14
+initial_velocity_max = 376.05
+gravity = Vector3(0, 0, 0)
+damping_min = 21.714
+damping_max = 36.857
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_d764m")
+
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_6yepf")
 
@@ -111,7 +131,7 @@ scale = Vector2(0.464844, 0.464844)
 sprite_frames = SubResource("SpriteFrames_y0pam")
 animation = &"walk"
 autoplay = "default"
-frame_progress = 0.616475
+frame_progress = 0.114031
 
 [node name="ShootPoint" type="Node2D" parent="."]
 position = Vector2(-103, -53)
@@ -121,5 +141,14 @@ position = Vector2(-103, -53)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_jc03d")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_rrkq0")
+texture = ExtResource("16_2fp53")
+lifetime = 0.4
+one_shot = true
+randomness = 0.3
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -23,6 +23,9 @@ func _on_body_entered(body):
 		textbox.queue_text("Kol: I can't believe I'm almost there! Getting through this city never used to be such a pain.", "res://cutscenes/c1/1.png")
 		textbox.queue_text("Kol: It'll be worth it though. It's crazy, really. I haven't seen her in, well, who knows how long, even though she practically raised me.")
 		textbox.queue_text("Kol: Her signal's getting closer. It has to be coming from just up ahead!",  "res://cutscenes/c1/2.png")
+		textbox.queue_text("[CONTROLS]")
+		textbox.queue_text("[Move: WASD/Arrows, Jump: SPACE, Shoot: Q]")
+		textbox.queue_text("[Inspect Object/Progress Dialogue: ENTER]")
 		GameState.mark_dialogue_as_seen(1)
 		queue_free()
 		

@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var defaultSprite : Sprite2D = $DefaultSprite
 @onready var activatedSprite : Sprite2D = $ActivateSprite
+@onready var particles = $GPUParticles2D
 
 @export var player : CharacterBody2D
 @export var spawnPoint: spawnPoint
@@ -19,6 +20,8 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		spawnPoint.spawnPointVar = global_position
 		defaultSprite.hide()
+		particles.restart()
+		particles.emitting = true
 		activatedSprite.show()
 		
 

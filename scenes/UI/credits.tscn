@@ -59,12 +59,13 @@ horizontal_alignment = 1
 
 [node name="Credits" type="Label" parent="screen_container/Panel/text_container/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "Programming: Noelle Dullaghan
+theme_override_font_sizes/font_size = 62
+text = "Programming: Noelle Dullaghan, 
+                           Gannon Bardasian, 
+                           Zaid Zarate
 Art: Noelle Dullaghan
 Writing: Noelle Dullaghan
 Score: AJ Jordan"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="screen_container/Panel/text_container/VBoxContainer"]
