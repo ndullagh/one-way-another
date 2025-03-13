@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="spawnPoint" load_steps=2 format=3 uid="uid://nxuswhblm18s"]
+
+[ext_resource type="Script" path="res://Custom Resources/spawnPoint.gd" id="1_vc1jb"]
+
+[resource]
+script = ExtResource("1_vc1jb")
+spawnPointVar = Vector2(0, 0)

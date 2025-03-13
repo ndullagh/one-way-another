@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bfrlba6b4iapo" path="res://other_sprites/explosion.png" id="16_2fp53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jc03d"]
-size = Vector2(93, 146)
+size = Vector2(108, 146)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y0pam"]
 animations = [{
@@ -139,7 +139,7 @@ position = Vector2(-103, -53)
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.5, 0)
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_jc03d")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

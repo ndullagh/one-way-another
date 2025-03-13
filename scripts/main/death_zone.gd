@@ -18,10 +18,10 @@ func _on_body_entered(body):
 			body.queue_free()
 		elif body.is_in_group("Player"):  # If it hits the player, trigger death
 			body.die()
-		death_screen.show_death_screen()
-		textbox.text_queue = []
-		textbox.hide_textbox()
-		textbox.current_state = textbox.State.READY
+			death_screen.show_death_screen()
+			textbox.text_queue = []
+			textbox.hide_textbox()
+			textbox.current_state = textbox.State.READY
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

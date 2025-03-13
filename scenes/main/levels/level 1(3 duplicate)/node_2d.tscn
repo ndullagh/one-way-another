@@ -40,7 +40,7 @@ size = Vector2(290, 604)
 [sub_resource type="Gradient" id="Gradient_lgrdn"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dexvs"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_crbmt"]
 gradient = SubResource("Gradient_lgrdn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x5xim"]
@@ -51,7 +51,7 @@ initial_velocity_max = 220.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
-color_ramp = SubResource("GradientTexture1D_dexvs")
+color_ramp = SubResource("GradientTexture1D_crbmt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdf75"]
 texture = ExtResource("7_b5um3")
