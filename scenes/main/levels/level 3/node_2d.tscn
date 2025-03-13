@@ -146,7 +146,7 @@ sources/4 = SubResource("TileSetAtlasSource_hg0w7")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm1so"]
 size = Vector2(368, 1158)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="BG" type="ParallaxBackground" parent="."]
 

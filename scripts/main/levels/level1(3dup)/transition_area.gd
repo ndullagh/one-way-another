@@ -34,4 +34,4 @@ func _process(delta: float) -> void:
 		print("Character inside: ", character_inside)
 		
 		if textbox.current_state == textbox.State.READY and textbox.text_queue.is_empty():
-			get_tree().change_scene_to_file("res://scenes/main/levels/level 2/node_2d.tscn")
+			get_tree().change_scene_to_file("res://scenes/main/levels/level 2/Level2.tscn")

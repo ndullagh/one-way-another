@@ -4,7 +4,10 @@ extends CharacterBody2D
 #right now in the scene tree the player character exists only within level 3. This may need to change in some way.
 #this may mean adding a "player" to each scene, or somehow making the player universal. I'm not sure of the details.
 @export var projectile_scene: PackedScene  # Reference to the projectile scene
+@export var spawnPoint: spawnPoint
 @onready var shoot_position = $ShootPoint  # Position from where bullets spawn
+
+@onready var camera = $Camera2D
 
 
 @onready var sprite = $AnimatedSprite2D  # Make sure this matches your node's path
@@ -35,6 +38,8 @@ var animation_locked = false
 func _ready():
 	gun_sprite.animation_finished.connect(_on_animation_finished)
 	sprite.animation_finished.connect(_on_shoot_animation_finished)
+	if (spawnPoint.spawnPointVar):
+		global_position = spawnPoint.spawnPointVar
 
 func _on_shoot_animation_finished():
 	if sprite.animation == "shoot" or sprite.animation == "shoot_left" or sprite.animation == "jump_shoot_right" or sprite.animation == "jump_shoot_left":  # Only unlock if it was the shoot animation
