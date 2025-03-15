@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d13ftmojtkjab"
+path="res://.godot/imported/robot footstep.mp3-5865ecb45c988834aa97d1f8ef2c70e8.mp3str"
+
+[deps]
+
+source_file="res://sfx/robot/robot footstep.mp3"
+dest_files=["res://.godot/imported/robot footstep.mp3-5865ecb45c988834aa97d1f8ef2c70e8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

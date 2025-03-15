@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cc8c6neiww7sf"
+path="res://.godot/imported/walkin runnin maybe a little [REDACTED] low.mp3-1fc568af820d4df97e6986cb01109d33.mp3str"
+
+[deps]
+
+source_file="res://sfx/walkin runnin maybe a little [REDACTED] low.mp3"
+dest_files=["res://.godot/imported/walkin runnin maybe a little [REDACTED] low.mp3-1fc568af820d4df97e6986cb01109d33.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
