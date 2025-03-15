@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bie6k6h2tlk6n"]
+[gd_scene load_steps=7 format=3 uid="uid://bie6k6h2tlk6n"]
 
 [ext_resource type="Texture2D" uid="uid://dwqnlec4lcb7k" path="res://cutscenes/overall/bg0.png" id="2_n62k3"]
 [ext_resource type="Script" path="res://scripts/UI/textbox2.gd" id="3_a0vi5"]
+[ext_resource type="AudioStream" uid="uid://cphmkpq4c5rmh" path="res://sfx/ui/button.mp3" id="3_e8p6h"]
+[ext_resource type="AudioStream" uid="uid://c75nn1fbk16rx" path="res://sfx/ui/text.mp3" id="4_c1ruy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_westr"]
 bg_color = Color(0, 0, 0, 0.560784)
@@ -103,3 +105,11 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 64
 text = "v"
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_e8p6h")
+
+[node name="TextPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c1ruy")
+volume_db = -26.123
+parameters/looping = true

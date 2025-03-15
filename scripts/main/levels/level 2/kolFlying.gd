@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var ACCELERATION: float = 5000 # how fast you reach max speed
 @export var FRICTION: float = 6000  # How fast you slow down
 @export var spawnPoint: spawnPoint
+@onready var boost_player = $BoostPlayer
+@onready var death_player = $DeathPlayer
 
 var boost_timer: float = 0
 var boost_cooldown: float = 0
@@ -46,6 +48,8 @@ func _physics_process(delta: float) -> void:
 		boost_cooldown = .25
 		boost_timer = 1.25
 		active = false
+		boost_player.pitch_scale = randf_range(0.8, 1.2)
+		boost_player.play()
 		sprite.play("boost")
 		await sprite.animation_finished
 		sprite.play("flying")  # Return to idle after attack
@@ -92,6 +96,7 @@ func _physics_process(delta: float) -> void:
 func die():
 	set_physics_process(false)  # disable movement
 	hide()  # hide player
+	death_player.play()
 	
 #func update_animation(direction: float, delta: float) -> void:
 	

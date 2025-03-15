@@ -14,6 +14,12 @@ extends CharacterBody2D
 @onready var gun_sprite = $AnimatedSprite2D2
 @onready var death_screen = $/root/Node2D/death_screen
 
+@onready var run_dust = $GPUParticles2D
+@onready var footstep_player = $FootstepPlayer
+@onready var jump_player = $JumpPlayer
+@onready var shoot_player = $ShootPlayer
+@onready var death_player = $DeathPlayer
+
 @export var coyote_time: float = 0.1  # time allowed to jump after falling
 
 @export var ACCELERATION: float = 5000 # how fast you reach max speed
@@ -34,6 +40,8 @@ var shoot_cooldown = .4
 var can_shoot = true
 var animation_locked = false
 
+var step_timer = 0.0
+var step_interval = 0.4
 
 func _ready():
 	gun_sprite.animation_finished.connect(_on_animation_finished)
@@ -63,7 +71,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		jumps_left = jumps_left - 1
 		coyote_timer = 0
-		
+		jump_player.pitch_scale = randf_range(0.9, 1.1) # Random pitch between 0.9 and 1.1
+		print("playing")
+		jump_player.play()
 		# restart jump animation
 		if sprite.animation in ["run_right", "idle_right", "fall_right", "jump_right"]:
 			sprite.play("jump_right")
@@ -84,9 +94,18 @@ func _physics_process(delta: float) -> void:
 		elif direction < 0:
 			facing_right = false
 			shoot_position.position.x = -abs(shoot_position.position.x)  # Move it to the left
+		if is_on_floor():
+			run_dust.process_material.direction.x = -direction
+			run_dust.emitting = true
+			step_timer -= delta
+			if step_timer <= 0:
+				footstep_player.pitch_scale = randf_range(0.9, 1.1) # Random pitch between 0.9 and 1.1
+				footstep_player.play()
+				step_timer = step_interval
 	else:
 		# apply friction when no input
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
+		run_dust.emitting = false
 		
 	# Update animation
 	if not animation_locked:
@@ -128,6 +147,8 @@ func _physics_process(delta: float) -> void:
 func die():
 	set_physics_process(false)  # disable movement
 	hide()  # hide player
+	death_player.play()
+	
 	
 func update_animation(direction: float, delta: float) -> void:
 	if not is_on_floor():
@@ -137,9 +158,12 @@ func update_animation(direction: float, delta: float) -> void:
 			else:
 				sprite.play("fall_left")
 		elif facing_right:
+			
 			sprite.animation = "jump_right"
+			
 		else:
 			sprite.animation = "jump_left"
+			
 		sprite.scale = Vector2(.47, .47) #adjust sprite scale to account for inconsistency
 	else:
 		if direction != 0:
@@ -156,6 +180,8 @@ func shoot_projectile():
 		var projectile = projectile_scene.instantiate()
 		get_parent().add_child(projectile)
 		projectile.global_position = shoot_position.global_position
+		shoot_player.pitch_scale = randf_range(0.8, 1.2) # Random pitch between 0.9 and 1.1
+		shoot_player.play()
 		
 		# Get the Hitbox node inside the projectile
 		var hitbox = projectile.get_node("Hitbox")  # Make sure "Hitbox" is the correct name

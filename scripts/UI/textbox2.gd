@@ -12,14 +12,18 @@ extends CanvasLayer
 @onready var background_1 = $Background1
 @onready var background_2 = $Background2
 @onready var background_0 = $Background0
+@onready var text_player = $TextPlayer
 
 @onready var textbox_hidden = true
+
 
 #bg 1 is in use by default
 var current_background = 1
 
 @onready var character = $/root/Node2D/Kol
 @onready var sprite = $/root/Node2D/Kol/AnimatedSprite2D
+
+@onready var click_player = $ClickPlayer
 
 const CHAR_READ_RATE = 0.03
 
@@ -58,9 +62,11 @@ func _process(delta: float) -> void:
 				if tween and tween.is_valid():
 					tween.kill()
 				end_symbol.text = "v"
+				click_player.play()
 				change_state(State.FINISHED)
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("jump"):
+				click_player.play()
 				change_state(State.READY)
 				hide_textbox()
 				if text_queue.is_empty():
@@ -112,9 +118,11 @@ func display_text() -> void:
 
 	if tween and tween.is_valid():
 		tween.kill()
-
+	
+	text_player.play()
 	tween = get_tree().create_tween()
 	tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHAR_READ_RATE)
+	
 	tween.finished.connect(_on_tween_finished)
 
 func _on_tween_finished():
@@ -123,6 +131,7 @@ func _on_tween_finished():
 
 func change_state(next_state):
 	current_state = next_state
+	text_player.stop()
 	match current_state:
 		State.READY:
 			print("Changing state to: State.READY")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://csv33dosoqjm"]
+[gd_scene load_steps=54 format=4 uid="uid://csv33dosoqjm"]
 
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_wkh7x"]
 [ext_resource type="Texture2D" uid="uid://cw0skkipjferr" path="res://bgs/far.png" id="2_r1har"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c3by4quto6g0v" path="res://bgs/near.png" id="4_u4lh7"]
 [ext_resource type="Texture2D" uid="uid://c6lvfsr0jnpfj" path="res://bgs/overlay.png" id="5_cfi4l"]
 [ext_resource type="PackedScene" uid="uid://b1mb07oy3cv70" path="res://scenes/main/kol/kol.tscn" id="6_iv1di"]
+[ext_resource type="Script" path="res://scripts/main/levels/level 3/newspaper_cutscene.gd" id="7_f2sfv"]
 [ext_resource type="PackedScene" uid="uid://bbtg7stpmp3sj" path="res://scenes/main/levels/level 1(3 duplicate)/projectile.tscn" id="7_rob7i"]
-[ext_resource type="Texture2D" uid="uid://7bivd0ybb8lc" path="res://other_sprites/cutscene_triggers/tank.png" id="9_cjsjo"]
+[ext_resource type="Texture2D" uid="uid://ba8mrb4fw10hm" path="res://other_sprites/cutscene_triggers/newspaper[1].png" id="8_vobxc"]
 [ext_resource type="Texture2D" uid="uid://dlgjirak1atwu" path="res://other_sprites/cutscene_triggers/enter/1.png" id="10_y828i"]
 [ext_resource type="Texture2D" uid="uid://bojjce5be24s4" path="res://other_sprites/cutscene_triggers/enter/2.png" id="11_kv7cr"]
 [ext_resource type="Texture2D" uid="uid://rcl772n4odm0" path="res://other_sprites/cutscene_triggers/bench.png" id="13_twqvq"]
@@ -18,14 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://i2egs4kon08e" path="res://other_sprites/checkpoints/groundactivated.png" id="19_ld4ho"]
 [ext_resource type="Texture2D" uid="uid://buymj6rja1tb2" path="res://other_sprites/checkpoints/grounddeactivated.png" id="20_oo7y2"]
 [ext_resource type="Texture2D" uid="uid://cd52nalmkr7qd" path="res://other_sprites/sparkle.png" id="21_ucijg"]
+[ext_resource type="AudioStream" uid="uid://bupnwdf4cvo3x" path="res://sfx/checkpoint.mp3" id="22_n6k02"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="24_0aoxm"]
 [ext_resource type="PackedScene" uid="uid://dbh1ku1geg23" path="res://scenes/main/levels/level 1(3 duplicate)/enemy.tscn" id="32_q7rdn"]
 [ext_resource type="PackedScene" uid="uid://bbovq6eqq8u4s" path="res://scenes/main/levels/level 1(3 duplicate)/enemy_projectile.tscn" id="33_qisvt"]
+[ext_resource type="AudioStream" uid="uid://cc8c6neiww7sf" path="res://sfx/walkin runnin maybe a little [REDACTED] low.mp3" id="36_37gfu"]
+[ext_resource type="AudioStream" uid="uid://cuy8p5nkme2w" path="res://sfx/kill me low.mp3" id="37_atdnw"]
 [ext_resource type="Texture2D" uid="uid://c4hyksx7c8txu" path="res://tiles/spikes.png" id="45_c1gpj"]
 [ext_resource type="Texture2D" uid="uid://glgn1btyahcj" path="res://icon.svg" id="46_q05ki"]
 [ext_resource type="Texture2D" uid="uid://cbdgy6f8iy3b5" path="res://tiles/tm.png" id="47_v3j7b"]
 [ext_resource type="PackedScene" uid="uid://bie6k6h2tlk6n" path="res://scenes/UI/textbox.tscn" id="48_kxrha"]
-[ext_resource type="Script" path="res://scripts/main/levels/level 3/text_area2.gd" id="51_ll73u"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 3/text_area3.gd" id="52_hes0g"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 3/text_area5.gd" id="53_jvi07"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 3/text_area6.gd" id="54_qxoul"]
@@ -36,8 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://cvdct231yiw8k" path="res://scenes/main/levels/level 3/death_zones/area_2d_5.tscn" id="59_5j55t"]
 [ext_resource type="PackedScene" uid="uid://cisntnt0bs3i5" path="res://scenes/main/levels/level 3/death_zones/area_2d_6.tscn" id="60_xtw1g"]
 [ext_resource type="PackedScene" uid="uid://bn3b3lf76tt65" path="res://scenes/UI/death_screen.tscn" id="61_48vir"]
-[ext_resource type="AudioStream" uid="uid://dcg6ju0cipyin" path="res://music/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg" id="63_c4n8r"]
-[ext_resource type="AudioStream" uid="uid://8vrxo1orh0u7" path="res://music/kill me.gov- 2_8_25, 11.46 PM.ogg" id="64_527ms"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgm3q"]
 blend_mode = 1
@@ -221,16 +222,16 @@ texture = ExtResource("5_cfi4l")
 
 [node name="text_area2" type="Area2D" parent="."]
 position = Vector2(10085, -210)
-script = ExtResource("51_ll73u")
+script = ExtResource("7_f2sfv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area2"]
 position = Vector2(338.25, 534)
 shape = SubResource("RectangleShape2D_71w0r")
 
 [node name="Sprite2D" type="Sprite2D" parent="text_area2"]
-position = Vector2(388, 756)
-scale = Vector2(1.61719, 1.61719)
-texture = ExtResource("9_cjsjo")
+position = Vector2(382, 960)
+scale = Vector2(0.570314, 0.570314)
+texture = ExtResource("8_vobxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="text_area2"]
 position = Vector2(352, 391)
@@ -317,6 +318,9 @@ process_material = SubResource("ParticleProcessMaterial_y2q4j")
 texture = ExtResource("21_ucijg")
 one_shot = true
 
+[node name="DingPlayer" type="AudioStreamPlayer2D" parent="Checkpoint"]
+stream = ExtResource("22_n6k02")
+
 [node name="Kol" parent="." groups=["Player"] instance=ExtResource("6_iv1di")]
 projectile_scene = ExtResource("7_rob7i")
 spawnPoint = ExtResource("19_03u2t")
@@ -349,13 +353,13 @@ position = Vector2(20100, 1377)
 script = ExtResource("24_0aoxm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("63_c4n8r")
+stream = ExtResource("36_37gfu")
+volume_db = -15.0
 autoplay = true
-parameters/looping = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("64_527ms")
-parameters/looping = true
+stream = ExtResource("37_atdnw")
+volume_db = -15.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(42279, -1121)
@@ -376,11 +380,6 @@ projectile_scene = ExtResource("33_qisvt")
 
 [node name="Enemy5" parent="." groups=["enemy"] instance=ExtResource("32_q7rdn")]
 position = Vector2(23094, 347)
-speed = 150.0
-projectile_scene = ExtResource("33_qisvt")
-
-[node name="Enemy6" parent="." groups=["enemy"] instance=ExtResource("32_q7rdn")]
-position = Vector2(15784, 1602)
 speed = 150.0
 projectile_scene = ExtResource("33_qisvt")
 

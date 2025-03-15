@@ -16,7 +16,8 @@ var music_tween: Tween
 func _on_body_entered(body):
 	#ensure it's the player and that the cutscene hasn't been seen yet
 	if body is CharacterBody2D:  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
-		textbox.queue_text("Level 2 Completion Cutscene Placeholder")
+		textbox.queue_text("Solid ground, how I missed you...", "res://cutscenes/2-3.png") #on ground again
+		textbox.queue_text("The signal's getting closer; I'm almost there!", "res://cutscenes/c1/2.png")
 		
 		#bandaid fix so that the ending screen doesn't immediately show when the final cutscene starts. it's stupid just don't touch it
 		character_inside = true

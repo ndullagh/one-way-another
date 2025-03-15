@@ -8,6 +8,7 @@ extends Area2D
 @export var spawnPoint: spawnPoint
 var activated : bool = false 
 
+@onready var ding_player = $DingPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,8 +23,9 @@ func _on_body_entered(body):
 		defaultSprite.hide()
 		particles.restart()
 		particles.emitting = true
-		activatedSprite.show()
 		
+		activatedSprite.show()
+		ding_player.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

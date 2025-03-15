@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b1mb07oy3cv70"]
+[gd_scene load_steps=72 format=3 uid="uid://b1mb07oy3cv70"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_4fnyj"]
 [ext_resource type="Texture2D" uid="uid://d3mbip4h4tsni" path="res://charsprites/gun/1.png" id="2_igqk5"]
@@ -60,6 +60,11 @@
 [ext_resource type="Texture2D" uid="uid://vdo8w0cquvyh" path="res://charsprites/shootflip/2.png" id="50_m5dnq"]
 [ext_resource type="Texture2D" uid="uid://cemr0uqnuxy7b" path="res://charsprites/shootflip/3.png" id="51_6fxy3"]
 [ext_resource type="Texture2D" uid="uid://cbrqu7wgghk2x" path="res://charsprites/shootflip/4.png" id="52_f7cv2"]
+[ext_resource type="Texture2D" uid="uid://c21cqi0lab5j6" path="res://other_sprites/gun-dust.png" id="61_50tt6"]
+[ext_resource type="AudioStream" uid="uid://jurekaxvpkha" path="res://sfx/player/footstep.mp3" id="62_u2u77"]
+[ext_resource type="AudioStream" uid="uid://dw8ayqsh5cf71" path="res://sfx/player/jump.mp3" id="63_o8fqf"]
+[ext_resource type="AudioStream" uid="uid://cbtcmjpbbvitk" path="res://sfx/player/kol gun.mp3" id="64_sy0mc"]
+[ext_resource type="AudioStream" uid="uid://bm53s4mlraqxp" path="res://sfx/ui/death.mp3" id="65_en0xl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3i35v"]
 animations = [{
@@ -320,6 +325,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8fbx"]
 size = Vector2(77.5, 171)
 
+[sub_resource type="Gradient" id="Gradient_bqm3f"]
+offsets = PackedFloat32Array(0, 0.490991, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dyhwu"]
+gradient = SubResource("Gradient_bqm3f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ryiba"]
+particle_flag_disable_z = true
+spread = 0.0
+initial_velocity_min = 24.27
+initial_velocity_max = 125.71
+gravity = Vector3(0, 0, 0)
+damping_max = 8.397
+scale_min = 0.5
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_dyhwu")
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(621, 126)
 collision_layer = 3
@@ -336,7 +359,7 @@ autoplay = "hidden"
 position = Vector2(10, 7)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kkhdi")
-animation = &"jump_shoot_left"
+animation = &"idle_left"
 offset = Vector2(0, 15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -356,3 +379,24 @@ drag_bottom_margin = 0.1
 [node name="ShootPoint" type="Node2D" parent="."]
 position = Vector2(99, -27)
 scale = Vector2(0.425781, 0.425781)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(8, 112)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_ryiba")
+texture = ExtResource("61_50tt6")
+one_shot = true
+
+[node name="FootstepPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("62_u2u77")
+
+[node name="JumpPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("63_o8fqf")
+
+[node name="ShootPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("64_sy0mc")
+volume_db = -5.0
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("65_en0xl")

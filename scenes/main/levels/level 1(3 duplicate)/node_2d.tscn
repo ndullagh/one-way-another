@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bydvsn7fhk2x4"]
+[gd_scene load_steps=51 format=4 uid="uid://bydvsn7fhk2x4"]
 
 [ext_resource type="PackedScene" uid="uid://dbh1ku1geg23" path="res://scenes/main/levels/level 1(3 duplicate)/enemy.tscn" id="1_75swk"]
 [ext_resource type="Texture2D" uid="uid://bc3datalscahe" path="res://bgs/farthest.png" id="1_ah2cd"]
@@ -16,20 +16,23 @@
 [ext_resource type="Texture2D" uid="uid://i2egs4kon08e" path="res://other_sprites/checkpoints/groundactivated.png" id="10_jslau"]
 [ext_resource type="PackedScene" uid="uid://bie6k6h2tlk6n" path="res://scenes/UI/textbox.tscn" id="10_uk25y"]
 [ext_resource type="Texture2D" uid="uid://buymj6rja1tb2" path="res://other_sprites/checkpoints/grounddeactivated.png" id="11_kgqm8"]
+[ext_resource type="AudioStream" uid="uid://bupnwdf4cvo3x" path="res://sfx/checkpoint.mp3" id="11_kvuju"]
+[ext_resource type="Script" path="res://scenes/main/levels/level 1(3 duplicate)/tank_area.gd" id="12_elnfc"]
 [ext_resource type="Texture2D" uid="uid://cd52nalmkr7qd" path="res://other_sprites/sparkle.png" id="12_jj7yk"]
+[ext_resource type="Texture2D" uid="uid://7bivd0ybb8lc" path="res://other_sprites/cutscene_triggers/tank.png" id="14_0xfme"]
 [ext_resource type="Script" path="res://scripts/main/levels/level1(3dup)/transition_area.gd" id="14_lg6v4"]
 [ext_resource type="Resource" uid="uid://hso3ues8p5ey" path="res://Custom Resources/spawn_lvl1.tres" id="15_14wti"]
 [ext_resource type="PackedScene" uid="uid://j03kqgmoyc56" path="res://scenes/main/levels/level 3/death_zones/area_2d.tscn" id="16_yetfb"]
+[ext_resource type="Texture2D" uid="uid://d24brnpccxxr2" path="res://other_sprites/cutscene_triggers/machine.png" id="18_585gv"]
+[ext_resource type="Texture2D" uid="uid://ijn3e26r2kjw" path="res://other_sprites/cutscene_triggers/sign.png" id="20_m01w4"]
 [ext_resource type="PackedScene" uid="uid://cisntnt0bs3i5" path="res://scenes/main/levels/level 3/death_zones/area_2d_6.tscn" id="20_xuh57"]
-[ext_resource type="Script" path="res://scenes/main/levels/level 1(3 duplicate)/text_area_2.gd" id="21_xi0ro"]
+[ext_resource type="Script" path="res://scenes/main/levels/level 1(3 duplicate)/text_area_4.gd" id="21_xi0ro"]
 [ext_resource type="PackedScene" uid="uid://bn3b3lf76tt65" path="res://scenes/UI/death_screen.tscn" id="22_jjfnk"]
 [ext_resource type="Script" path="res://scripts/main/levels/level 3/text_area.gd" id="22_s43x0"]
 [ext_resource type="Script" path="res://scripts/UI/death_screen.gd" id="23_wjmgm"]
-[ext_resource type="Texture2D" uid="uid://dd1h8wh5thm4m" path="res://other_sprites/cutscene_triggers/placeholder.png" id="23_y567h"]
-[ext_resource type="AudioStream" uid="uid://dcg6ju0cipyin" path="res://music/have you e ver had a dream that you could when you you when it  - 2_8_25, 1.00 AM.ogg" id="24_bljyq"]
 [ext_resource type="Texture2D" uid="uid://dlgjirak1atwu" path="res://other_sprites/cutscene_triggers/enter/1.png" id="24_glsmi"]
 [ext_resource type="Texture2D" uid="uid://bojjce5be24s4" path="res://other_sprites/cutscene_triggers/enter/2.png" id="25_rlu1a"]
-[ext_resource type="AudioStream" uid="uid://8vrxo1orh0u7" path="res://music/kill me.gov- 2_8_25, 11.46 PM.ogg" id="25_s81mq"]
+[ext_resource type="AudioStream" uid="uid://cc8c6neiww7sf" path="res://sfx/walkin runnin maybe a little [REDACTED] low.mp3" id="31_wxop5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgm3q"]
 blend_mode = 1
@@ -52,6 +55,43 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 2.0
 color_ramp = SubResource("GradientTexture1D_crbmt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we7o6"]
+size = Vector2(316.5, 1266.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l45wu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_glsmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rlu1a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15w1d"]
+size = Vector2(316.5, 1266.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w37an"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_glsmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rlu1a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.75
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71w0r"]
+size = Vector2(316.5, 1266.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdf75"]
 texture = ExtResource("7_b5um3")
@@ -142,45 +182,10 @@ sources/0 = SubResource("TileSetAtlasSource_vrpgm")
 sources/2 = SubResource("TileSetAtlasSource_vk4b7")
 sources/4 = SubResource("TileSetAtlasSource_hg0w7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71w0r"]
-size = Vector2(316.5, 1266.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sefi6"]
 size = Vector2(316.5, 1266.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_15w1d"]
-size = Vector2(316.5, 1266.5)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_w37an"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("24_glsmi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_rlu1a")
-}],
-"loop": true,
-"name": &"default",
-"speed": 1.75
-}]
-
 [node name="Node2D" type="Node2D"]
-
-[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
-position = Vector2(2974, 616)
-speed = 150.0
-projectile_scene = ExtResource("2_622fx")
-
-[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
-position = Vector2(8156, 919)
-speed = 150.0
-projectile_scene = ExtResource("2_622fx")
-
-[node name="Enemy3" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
-position = Vector2(9482, -236)
-speed = 150.0
-projectile_scene = ExtResource("2_622fx")
 
 [node name="BG" type="ParallaxBackground" parent="."]
 
@@ -253,6 +258,73 @@ process_material = SubResource("ParticleProcessMaterial_x5xim")
 texture = ExtResource("12_jj7yk")
 one_shot = true
 
+[node name="DingPlayer" type="AudioStreamPlayer2D" parent="Checkpoint"]
+stream = ExtResource("11_kvuju")
+
+[node name="text_area2" type="Area2D" parent="."]
+position = Vector2(3487, -295)
+script = ExtResource("12_elnfc")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area2"]
+position = Vector2(388, 756)
+scale = Vector2(1.61719, 1.61719)
+texture = ExtResource("14_0xfme")
+
+[node name="tank_collision" type="CollisionShape2D" parent="text_area2"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_we7o6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="text_area2"]
+position = Vector2(352, 391)
+sprite_frames = SubResource("SpriteFrames_l45wu")
+autoplay = "default"
+
+[node name="text_area4" type="Area2D" parent="."]
+position = Vector2(9523, -1027)
+script = ExtResource("21_xi0ro")
+
+[node name="robot_tank" type="CollisionShape2D" parent="text_area4"]
+position = Vector2(338.25, 534)
+shape = SubResource("RectangleShape2D_15w1d")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area4"]
+position = Vector2(329, 836)
+scale = Vector2(0.570314, 0.570314)
+texture = ExtResource("18_585gv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="text_area4"]
+position = Vector2(335, 548)
+sprite_frames = SubResource("SpriteFrames_w37an")
+autoplay = "default"
+
+[node name="text_area6" type="Area2D" parent="."]
+position = Vector2(13225, -1045)
+script = ExtResource("14_lg6v4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
+position = Vector2(-12, 192)
+shape = SubResource("RectangleShape2D_71w0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="text_area6"]
+position = Vector2(26.9999, 561)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("20_m01w4")
+
+[node name="Enemy" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
+position = Vector2(2974, 616)
+speed = 150.0
+projectile_scene = ExtResource("2_622fx")
+
+[node name="Enemy2" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
+position = Vector2(8156, 919)
+speed = 150.0
+projectile_scene = ExtResource("2_622fx")
+
+[node name="Enemy3" parent="." groups=["enemy"] instance=ExtResource("1_75swk")]
+position = Vector2(9482, -236)
+speed = 150.0
+projectile_scene = ExtResource("2_622fx")
+
 [node name="Kol" parent="." groups=["Player"] instance=ExtResource("6_5gaus")]
 position = Vector2(118, -12)
 projectile_scene = ExtResource("7_l1pvy")
@@ -269,19 +341,6 @@ navigation_visibility_mode = 1
 
 [node name="Textbox" parent="." instance=ExtResource("10_uk25y")]
 
-[node name="text_area6" type="Area2D" parent="."]
-position = Vector2(13225, -1045)
-script = ExtResource("14_lg6v4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area6"]
-position = Vector2(-12, 192)
-shape = SubResource("RectangleShape2D_71w0r")
-
-[node name="Sprite2D" type="Sprite2D" parent="text_area6"]
-position = Vector2(-17, 484)
-scale = Vector2(1.62109, 1.62109)
-texture = ExtResource("23_y567h")
-
 [node name="Area2D" parent="." instance=ExtResource("16_yetfb")]
 position = Vector2(-1203, 618)
 
@@ -289,12 +348,8 @@ position = Vector2(-1203, 618)
 script = ExtResource("23_wjmgm")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_bljyq")
-parameters/looping = true
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_s81mq")
-parameters/looping = true
+stream = ExtResource("31_wxop5")
+volume_db = -15.0
 
 [node name="Area2D6" parent="." instance=ExtResource("20_xuh57")]
 position = Vector2(9774, 447)
@@ -306,39 +361,3 @@ script = ExtResource("22_s43x0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="text_area"]
 position = Vector2(338.25, 534)
 shape = SubResource("RectangleShape2D_sefi6")
-
-[node name="text_area3" type="Area2D" parent="."]
-position = Vector2(3342, -150)
-script = ExtResource("21_xi0ro")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area3"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_15w1d")
-
-[node name="Sprite2D" type="Sprite2D" parent="text_area3"]
-position = Vector2(390, 702)
-scale = Vector2(1.61719, 1.61719)
-texture = ExtResource("23_y567h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="text_area3"]
-position = Vector2(352, 391)
-sprite_frames = SubResource("SpriteFrames_w37an")
-autoplay = "default"
-
-[node name="text_area4" type="Area2D" parent="."]
-position = Vector2(11785, -1246)
-script = ExtResource("21_xi0ro")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="text_area4"]
-position = Vector2(338.25, 534)
-shape = SubResource("RectangleShape2D_15w1d")
-
-[node name="Sprite2D" type="Sprite2D" parent="text_area4"]
-position = Vector2(390, 702)
-scale = Vector2(1.61719, 1.61719)
-texture = ExtResource("23_y567h")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="text_area4"]
-position = Vector2(352, 391)
-sprite_frames = SubResource("SpriteFrames_w37an")
-autoplay = "default"

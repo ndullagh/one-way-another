@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://crppt6mcgws28"]
+[gd_scene load_steps=51 format=3 uid="uid://crppt6mcgws28"]
 
 [ext_resource type="Script" path="res://scripts/main/character_body_2d.gd" id="1_0derk"]
 [ext_resource type="Texture2D" uid="uid://dx642ahrb3kj0" path="res://charsprites/jumpfall/jumpfall/fl/fl1.png" id="2_jxpdj"]
@@ -46,6 +46,8 @@
 [ext_resource type="Texture2D" uid="uid://b0a5xm6lhueqb" path="res://charsprites/r/r8.png" id="37_i3tvu"]
 [ext_resource type="Texture2D" uid="uid://c427psowuwh50" path="res://charsprites/r/r9.png" id="38_48eu7"]
 [ext_resource type="Texture2D" uid="uid://onl865ww3313" path="res://charsprites/r/r10.png" id="39_46lo1"]
+[ext_resource type="AudioStream" uid="uid://dw843o1k8k5h3" path="res://sfx/player/boost.mp3" id="47_ix2mc"]
+[ext_resource type="AudioStream" uid="uid://bm53s4mlraqxp" path="res://sfx/ui/death.mp3" id="48_eaa65"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kkhdi"]
 animations = [{
@@ -265,3 +267,9 @@ shape = SubResource("RectangleShape2D_t8fbx")
 position = Vector2(19.0919, 14.8492)
 rotation = 0.645772
 scale = Vector2(3.8, 4.5)
+
+[node name="BoostPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("47_ix2mc")
+
+[node name="DeathPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("48_eaa65")

@@ -4,6 +4,7 @@ extends Area2D
 @export var direction: Vector2 = Vector2.RIGHT  # Default direction
 @onready var death_screen = $/root/Node2D/death_screen
 @onready var textbox = $/root/Node2D/Textbox
+@onready var explosion = $GPUParticles2D
 
 func _process(delta):
 	position += direction * speed * delta  # Move the projectile
@@ -11,12 +12,13 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):  # If it hits an enemy, destroy the enemy
-		var explosion = body.get_node("GPUParticles2D")
+		body.death_player.play()
 		explosion.restart()
 		explosion.emitting = true
 		body.set_physics_process(false)
+		body.can_shoot = false
 		body.get_node("AnimatedSprite2D").hide()
-		await get_tree().create_timer(0.3).timeout  # Wait for explosion to finish
+		#await get_tree().create_timer(0.2).timeout  # Wait for explosion to finish
 		body.queue_free()
 	elif body.is_in_group("Player"):  # If it hits the player, trigger death
 		body.die()
@@ -24,6 +26,7 @@ func _on_body_entered(body):
 		textbox.text_queue = []
 		textbox.hide_textbox()
 		textbox.current_state = textbox.State.READY
+	await get_tree().create_timer(0.2).timeout
 	queue_free()  # Destroy the projectile
 
 func freeze():

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnh2wv551us2a" path="res://other_sprites/bullets/enemy/3.png" id="4_lv00f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yj1ym"]
-size = Vector2(5.625, 5.625)
+size = Vector2(70, 12.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ao4bf"]
 animations = [{
@@ -37,7 +37,7 @@ scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_yj1ym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hitbox"]
-scale = Vector2(0.41875, 0.41875)
+scale = Vector2(0.871875, 0.871875)
 sprite_frames = SubResource("SpriteFrames_ao4bf")
 autoplay = "default"
 frame = 1

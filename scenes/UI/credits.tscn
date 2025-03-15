@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnnh5riwlya1k"]
+[gd_scene load_steps=6 format=3 uid="uid://cnnh5riwlya1k"]
 
 [ext_resource type="Script" path="res://scripts/UI/credits.gd" id="1_2ytdt"]
+[ext_resource type="AudioStream" uid="uid://cphmkpq4c5rmh" path="res://sfx/ui/button.mp3" id="2_p0n13"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5byde"]
 bg_color = Color(0, 0, 0, 1)
@@ -65,7 +66,8 @@ text = "Programming: Noelle Dullaghan,
                            Zaid Zarate
 Art: Noelle Dullaghan
 Writing: Noelle Dullaghan
-Score: AJ Jordan"
+Score: AJ Jordan
+Sound Effects: ZapSplat"
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="screen_container/Panel/text_container/VBoxContainer"]
@@ -77,3 +79,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_2dtrl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rys20")
 text = "Return To Title"
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_p0n13")

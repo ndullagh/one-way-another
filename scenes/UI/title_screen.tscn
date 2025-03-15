@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b81l8avrn0acd"]
+[gd_scene load_steps=9 format=3 uid="uid://b81l8avrn0acd"]
 
 [ext_resource type="Script" path="res://scripts/UI/title_screen.gd" id="1_rg8sg"]
 [ext_resource type="Texture2D" uid="uid://c23x76ofogxp1" path="res://cutscenes/c3/1.png" id="2_jlftj"]
+[ext_resource type="AudioStream" uid="uid://cphmkpq4c5rmh" path="res://sfx/ui/button.mp3" id="3_saqp5"]
+[ext_resource type="AudioStream" uid="uid://cuy8p5nkme2w" path="res://sfx/kill me low.mp3" id="4_truti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7upjr"]
 bg_color = Color(0, 0, 0, 1)
@@ -112,3 +114,11 @@ theme_override_font_sizes/font_size = 70
 theme_override_styles/hover = SubResource("StyleBoxFlat_q6jvu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_271dk")
 text = "Quit"
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_saqp5")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_truti")
+volume_db = -15.0
+autoplay = true

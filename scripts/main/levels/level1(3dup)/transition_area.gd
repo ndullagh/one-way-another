@@ -15,10 +15,11 @@ var music_tween: Tween
 
 func _on_body_entered(body):
 	#ensure it's the player and that the cutscene hasn't been seen yet
-	if body is CharacterBody2D:  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
-		textbox.queue_text("Level 1 Completion Cutscene Placeholder")
-		textbox.queue_text("Transition to Level 2")
-		textbox.queue_text("[LEVEL 2 CONTROLS]")
+	if body.is_in_group("Player"):  # THIS WILL NEED TO CHANGE IF PLAYER IS NO LONGER THE ONLY CHARACTER_BODY_2D
+		textbox.queue_text("Phew, that wasn't too bad!", "res://cutscenes/phew.png") #Phew
+		textbox.queue_text("Yikes, looks like things have gotten pretty bad around here.", "res://cutscenes/path.png") #Behind shot at super broken path with spikes and drones
+		textbox.queue_text("But that's what these are for!", "res://cutscenes/jetpack.png") #jetpack opening up
+		textbox.queue_text("[LEVEL 2 CONTROLS]", "res://cutscenes/overall/bg0.png")
 		textbox.queue_text("[Fly: WASD/Arrows, Boost: SPACE]")
 		
 		#bandaid fix so that the ending screen doesn't immediately show when the final cutscene starts. it's stupid just don't touch it

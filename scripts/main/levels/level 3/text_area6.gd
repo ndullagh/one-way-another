@@ -96,7 +96,7 @@ func _process(delta: float) -> void:
 		textbox.queue_text("Kol: I don't deserve to go through this again.", "res://cutscenes/c5/16.png") # just smile
 		textbox.queue_text("Kol: I'm sorry, Ev. Thank you for everything.", "res://cutscenes/c5/17.png") # grabs pipe
 		textbox.queue_text("", "res://cutscenes/c5/18.png")
-		textbox.queue_text("*CRASH*", "res://cutscene/overall/bg0.png") #destroys pods
+		textbox.queue_text("*CRASH*", "res://cutscenes/overall/bg0.png") #destroys pods
 		textbox.queue_text("*SLAM*")
 		textbox.queue_text("*CRUNCH*")
 		textbox.queue_text("Kol: ...")
